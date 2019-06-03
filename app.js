@@ -1,5 +1,4 @@
 import { HTTP } from './utils/http'
-1
 import {
   host
 } from './config'
