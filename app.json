@@ -1,7 +1,7 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/demo/demo",
+    "pages/income/income",
     "pages/cart/cart",
     "pages/settlement/settlement",
     "pages/orders/orders",
@@ -30,8 +30,8 @@
         "selectedIconPath": "./static/images/home_on.png"
       },
       {
-        "pagePath": "pages/demo/demo",
-        "text": "测试"
+        "pagePath": "pages/income/income",
+        "text": "公益"
       },
       {
         "pagePath": "pages/cart/cart",

@@ -39,12 +39,18 @@ Page({
     ]
   },
   onLoad: function () {
-    /*
-      1. 获取首页店铺--api.getShipList()
-    */
-    let indexData = Promise.all([api.getShopList()]);
+
+    // 1. 首页店铺
+    const req1 = api.getShopList();
+    // 2. 首页轮播
+    const req2 = api.getBannerList();
+    // 3. 首页推荐新闻
+
+    
+    let indexData = Promise.all([req1, req2]);
     indexData.then(res => {
       console.log(res[0]);
+      console.log(res[1]);
     })
   },
 })

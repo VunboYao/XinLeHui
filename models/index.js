@@ -12,6 +12,13 @@ class IndexData extends HTTP {
       url: `${host}/shop/ShopList`
     })
   }
+
+  // 获取首页轮播图
+  getBannerList() {
+    return super.request({
+      url: `${host}/shop/BannerList`
+    })
+  }
 }
 
 export {
