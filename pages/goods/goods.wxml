@@ -53,12 +53,13 @@
   </view>
 
   <view class="detail-desc">
-    <view class="d-header">
+   <!--  <view class="d-header">
       <text>图文详情</text>
     </view>
     <view class='detail-image'>
       <image wx:for='{{desc}}' src='{{item.src}}'  wx:key="{{index}}"></image>
-    </view>
+    </view> -->
+    <rich-text nodes="{{nodes}}"></rich-text>
   </view>
 
   <!-- 底部操作菜单 -->

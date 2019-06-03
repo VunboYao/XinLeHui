@@ -6,7 +6,6 @@ import {
 // 生成数据获取函数
 const api = new IndexData()
 
-
 Page({
   data: {
     indicatorDots: true,
@@ -40,6 +39,12 @@ Page({
     ]
   },
   onLoad: function () {
-
+    /*
+      1. 获取首页店铺--api.getShipList()
+    */
+    let indexData = Promise.all([api.getShopList()]);
+    indexData.then(res => {
+      console.log(res[0]);
+    })
   },
 })
