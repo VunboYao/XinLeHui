@@ -1,0 +1,43 @@
+<view class='container'>
+  <navigator url='./../search/search' class='search-container'>
+    <view class='search'>
+      <icon type='search' size='16' color='#FEC92E'></icon> 搜索
+    </view>
+  </navigator>
+  <swiper class='swiper' indicator-dots='{{indicatorDots}}' autoplay='{{autoplay}}' interval='{{interval}}' duration='{{duration}}' circular indicator-active-color='#FEC92E' indicator-color='#ffffff'>
+    <block wx:for='{{imgUrls}}' wx:key="index">
+      <swiper-item>
+        <image src='{{item}}' class='swiper-image'></image>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='news-container'>
+    <view class='item happy_tui'>
+      <swiper vertical autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular>
+        <block wx:for="{{news}}" wx:key='{{index}}'>
+          <swiper-item>
+            <navigator url='./../index/index' class='show-text'>
+              <text class='tui_text'>推荐</text>
+              <text class='tui_item'>{{item}}</text>
+            </navigator>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view class='more'>
+      <text>更多</text>
+    </view>
+  </view>
+  <view class='shop-container'>
+    <view class="weui-cells__title">热门</view>
+    <view class='shop-list'>
+      <block wx:for='{{shopList}}' wx:key="index">
+        <navigator url='./../shop/shop' class='shop'>
+          <image src='{{item.shopImg}}'></image>
+          <view class='shop-name'>{{item.shopName}}</view>
+          <view class='shop-intro'>{{item.shopIntro}}</view>
+        </navigator>
+      </block>
+    </view>
+  </view>
+</view>

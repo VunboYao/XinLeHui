@@ -1,0 +1,33 @@
+<!--shop/shop.wxml-->
+<view class='container'>
+  <view class='shopBg'>
+    <image src='../../static/02.png'></image>
+  </view>
+  <view class="weui-panel shopIntro">
+    <view class="weui-panel__bd weui-media-box weui-media-box_appmsg">
+      <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+        <image class="weui-media-box__thumb" src="{{shop.imgUrl}}" />
+      </view>
+      <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+        <view class="weui-media-box__title">{{shop.shopName}}</view>
+        <view class="weui-media-box__desc">{{shop.shopIntro}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='goods-container'>
+    <view class="weui-cells__title">
+      <text>宝贝</text>
+    </view>
+    <view class='goods-list'>
+      <block wx:for='{{goodsList}}' wx:key="index">
+        <navigator url='./../goods/goods' class='goods'>
+          <image src='{{item.goodsImg}}'></image>
+          <view class='inner'>
+            <view class='goods-name'>{{item.goodsName}}</view>
+            <view class='goods-price'>{{item.goodsPrice}}</view>
+          </view>
+        </navigator>
+      </block>
+    </view>
+  </view>
+</view>

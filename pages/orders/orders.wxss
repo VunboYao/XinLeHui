@@ -1,0 +1,42 @@
+.container {
+  padding-top: 80rpx;
+  background-color: #eee;
+}
+
+/* tab */
+.scroll-tab {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: #fff;
+  white-space: nowrap;
+}
+.tab-list {
+  display: flex;
+  justify-content: space-around;
+}
+/* active */
+.currentActive {
+  position: relative;
+  color: #FA436A;
+}
+.currentActive::after {
+  position: absolute;
+  content: '';
+  bottom: 0;
+  display: block;
+  height: 4rpx;
+  width: 100%;
+  background: #FA436A;
+}
+
+/* 商品列表 */
+.goods-list {
+  background-color: #eee;
+}
+.scroll-y {
+  height: 100%;
+}
+

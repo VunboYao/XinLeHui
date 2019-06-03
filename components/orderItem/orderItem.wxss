@@ -1,0 +1,113 @@
+
+.container {
+  padding: 0 30rpx;
+  margin-bottom: 20rpx;
+  background-color: #fff;
+}
+/* 时间戳 */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80rpx;
+  border-bottom: 1px solid #efefef;
+}
+
+/* 商品状态 */
+.current-status {
+  color: #FA436A;
+}
+.close-status {
+  color: #999;
+}
+
+/* 商品展示 */
+.main {
+  padding: 20rpx 0 0;
+  border-bottom: 1px solid #efefef;
+}
+.scroll-x {
+  white-space: nowrap;
+}
+.goods-img {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 4rpx;
+  margin-right: 20rpx;
+}
+
+/* 单个商品 */
+.detail-show {
+  display: flex;
+  justify-content: space-between;
+}
+.goods-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 4rpx;
+  margin-right: 20rpx;
+}
+.goods-detail-intro{
+  width: calc(100% - 120rpx);
+}
+.goods-detail-h1 {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 30rpx;
+}
+.goods-detail-h2{
+  display: block;
+  font-size: 28rpx;
+  color: #999;
+}
+.goods-detail-price {
+  font-size: 30rpx;
+}
+
+/* 数量与费用 */
+.goods-pay-tip {
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: right;
+  color: #999;
+  font-size: 28rpx;
+}
+.goods-pay_total-amount {
+  color: #000;
+}
+.goods-pay_total-money {
+  font-size: 32rpx;
+  color: #000;
+}
+
+/* 支付 */
+.footer {
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: right;
+}
+
+/* 共有样式 */
+.confirm-button {
+  display: inline-block;
+  width: 160rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  text-align: center;
+  margin-left: 30rpx;
+}
+
+/* 私有样式 */
+.cancel-pay {
+  border: 1px solid #aaa;
+  background-color: #fefefe;
+}
+.confirm-pay {
+  border: 1px solid #FA436A;
+  color: #FA436A;
+  background-color: #FFF9F9;
+}

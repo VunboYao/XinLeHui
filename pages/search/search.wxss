@@ -1,0 +1,80 @@
+/* pages/search/search.wxss */
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100%;
+  color: #191c2c;
+  position: relative;
+}
+.weui-search-bar,
+.searchbar-result{
+  width: 100%;
+}
+.weui-search-bar__cancel-btn{
+  font-size: 32rpx;
+}
+/* 搜索结果 */
+.shop{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  font-size: 28rpx;
+  color: #666;
+}
+.shop-img{
+  width: 220rpx;
+  height: 180rpx;
+  margin-right: 18rpx;
+}
+.shop-inner{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-around;
+}
+.shop-name{
+  font-size: 32rpx;
+  color: #000;
+}
+.shop-price{
+  color: #f7a92f;
+  font-size: 36rpx;
+  padding-right: 16rpx
+}
+/* 热门 */
+.hot{
+  width: 100%;
+}
+.weui-cells__title{
+  position: relative;
+}
+.weui-cells__title::before{
+  content: '';
+  position: absolute;
+  width: 3px;
+  height: 30rpx;
+  left: 14rpx;
+  top: 6rpx;
+  background: #f7a92f;
+}
+.keywords{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 20rpx;
+}
+.words{
+  height: 60rpx;
+  line-height: 60rpx;
+  background: #fff;
+  border-radius: 60rpx;
+  font-size: 32rpx;
+  text-align: center;
+  color: #f7a92f;
+  margin-left: 30rpx;
+  padding: 0 30rpx;
+}

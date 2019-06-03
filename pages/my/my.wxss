@@ -1,0 +1,57 @@
+/* pages/my/my.wxss */
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100%;
+  color: #191c2c;
+  position: relative;
+}
+.my-container{
+  width: 100%;
+  height: 350rpx;
+  background: #191c2c;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.userinfo{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.userinfo image{
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.float-box{
+  width: 80%;
+  height: 160rpx;
+  position: absolute;
+  top: 270rpx;
+  background: #fff;
+  border-radius: 30rpx;
+  overflow: hidden;
+  font-size: 28rpx;
+  box-shadow: 0 0 3px #c0c0c0;
+}
+.float-box .weui-grid,
+.float-box .weui-grids{
+  border: none;
+}
+
+.service{
+  width: 100%;
+  margin-top: 120rpx;
+  background: #fff;
+}
+.service .weui-grids,
+.service .weui-grid{
+  border-color: #eee;
+}

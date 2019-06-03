@@ -1,0 +1,58 @@
+/* pages/login/login.wxss */
+page{
+  background-color: #fff;
+}
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100%;
+  color: #191c2c;
+  position: relative;
+}
+.logo{
+  width: 100%;
+  height: 500rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: rgb(221, 221, 221);
+  border-bottom: 1px solid #ccc;
+  padding: 60rpx 0 20rpx;
+  box-sizing: border-box;
+}
+.logo image{
+  width: 200rpx;
+  height: 200rpx;
+}
+.tip{
+  width: 100%;
+  margin-top: 30rpx;
+  font-size: 32rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+.tip-2{
+  color: #666;
+  font-size: 26rpx;
+  padding: 40rpx 0 0 20rpx;
+}
+
+.userinfo{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 30rpx;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+  margin-left: 10rpx;
+}
+.btn-login{
+  width: 220rpx;
+  background: #fec95e;
+  margin-top: 50rpx;
+  border: none;
+}

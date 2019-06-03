@@ -1,0 +1,108 @@
+/* shop/shop.wxss */
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100%;
+  color: #191c2c;
+  position: relative;
+}
+.shopBg {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.shopBg::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,.5);
+    z-index: 1
+}
+.shopBg::after {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 2;
+  top: 124px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg,transparent 0,hsla(0,0%,100%,.8) 80%,#f7f7f7)
+}
+.weui-panel:after{
+  border-color: #666;
+}
+.shopBg image {
+  width: 100%;
+}
+
+.shopIntro {
+  color: #fff;
+  background: transparent;
+  margin-top: 0;
+}
+.weui-media-box__desc{
+  color: #ccc;
+}
+
+.goods-container{
+  width: 100%;
+  margin-top: 30rpx;
+}
+.weui-cells__title text{
+  background: rgba(255, 255, 255, .6);
+  padding: 6rpx 26rpx;
+  color: orangered;
+  font-size: 30rpx;
+  border-radius: 20rpx;
+}
+.goods-container{
+  width: 100%;
+  margin-top: 30rpx;
+  box-sizing: border-box;
+  padding: 10rpx 26rpx;
+}
+.goods-list{
+  width: 100%;
+  overflow: hidden;
+  padding: 20rpx 0;
+}
+.goods{
+  display: block;
+  width: 48%;
+  color: #333;
+  font-size: 32rpx;
+  position: relative;
+  float: left;
+  margin-bottom: 20rpx;
+  background: #fff;
+  border-radius: 20rpx;
+}
+.goods:nth-child(even){
+  margin-left: 4%;
+}
+.goods > image{
+  width: 100%;
+  height: 300rpx;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+}
+.goods .inner{
+  padding: 10rpx 20rpx;
+}
+.goods .goods-name{
+  height: 92rpx;
+  line-height: 46rpx;
+  overflow: hidden;
+}
+.goods .goods-price{
+  color: orange;
+}

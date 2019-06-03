@@ -1,0 +1,149 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100%;
+  color: #191c2c;
+  position: relative;
+}
+.swiper,
+.swiper-image{
+  width: 100%;
+  height: 420rpx;
+}
+.search-container{
+  width: 100%;
+  height: 80rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+.search{
+  width: 80%;
+  height: 70rpx;
+  line-height: 70rpx;
+  border-radius: 35rpx;
+  background: rgba(255, 255, 255, 0.5);
+  margin: 20rpx auto;
+  text-align: center;
+  color: #FEC92E;
+  font-size: 32rpx;
+}
+.search icon{
+  position: relative;
+  top: 14rpx;
+}
+
+.news-container{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  margin-top:10px;
+  padding: 16rpx 20rpx;
+  background: white;
+}
+.item {
+  flex: 1;
+}
+.happy_tui{
+  padding: 0 8px;
+}
+.happy_tui > swiper {
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.show-text{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+.tui_item{
+  font-size: 12px;
+  color: #000;
+  vertical-align: middle;
+}
+.tui_text{
+  border: 1px solid #ED2A22;
+  border-radius: 12px;
+  font-size: 20rpx;
+  color: #ED2A22;
+  padding: 0 3px;
+  margin: 0 5px 0 0;
+}
+.more{
+  padding: 0 0 0 8px;
+  border-left: 1px solid #333;
+  text-align:center;
+  line-height:18px;
+  margin:auto 0;
+}
+.more > text{
+  font-size: 24rpx;
+  color: #000;
+}
+
+.shop-container{
+  width: 100%;
+  margin-top: 30rpx;
+  background: #fff;
+  box-sizing: border-box;
+  padding: 10rpx 26rpx;
+}
+.shop-list{
+  width: 100%;
+  overflow: hidden;
+  padding: 20rpx 0;
+}
+.shop{
+  display: block;
+  width: 48%;
+  height: 420rpx;
+  color: #fff;
+  font-size: 32rpx;
+  position: relative;
+  float: left;
+  margin-bottom: 20rpx;
+}
+.shop:nth-child(even){
+  margin-left: 4%;
+}
+.shop > image{
+  width: 100%;
+  height: 100%;
+  border-radius: 20rpx;
+}
+.shop-name{
+  position: absolute;
+  left: 20rpx;
+  bottom: 80rpx;
+}
+.shop-intro{
+  position: absolute;
+  left: 20rpx;
+  bottom: 10rpx;
+  font-size: 28rpx;
+  line-height: 30rpx;
+  height: 60rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.weui-cells__title {
+  position: relative;
+}
+
+.weui-cells__title::before {
+  content: '';
+  position: absolute;
+  width: 3px;
+  height: 30rpx;
+  left: 14rpx;
+  top: 6rpx;
+  background: #f7a92f;
+}

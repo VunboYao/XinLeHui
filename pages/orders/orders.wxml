@@ -1,0 +1,36 @@
+<view class="container">
+   <!-- tab -->
+   <scroll-view class="scroll-tab" scroll-x>
+     <view class="tab-list">
+       <text
+        wx:for="{{tabList}}"
+        wx:key="{{index}}"
+        bind:tap="selectTab"
+        class="tab-all {{currentIndex == index ? 'currentActive' : ''}}"
+        data-index="{{index}}">{{item}}</text>
+     </view>
+   </scroll-view>
+
+   <!-- 商品列表 -->
+   <view class="goods-list">
+     <swiper
+      current="{{currentIndex}}"
+      duration="300"
+      bind:change="switchTab"
+      style="height:{{windowHeight}}px"
+      class="swiper">
+      <swiper-item class="swiper-item" wx:for="{{3}}" wx:key="{{index}}">
+        <scroll-view scroll-y="true" class="scroll-y">
+          <block
+            wx:for="{{orderList}}"
+            wx:for-item="goods"
+            wx:for-index="goodsId"
+            wx:key="{{goodsId}}">
+            <order-item goods="{{goods}}"></order-item>
+          </block>
+        </scroll-view>
+      </swiper-item>
+     </swiper>
+   </view>
+
+</view>

@@ -1,0 +1,9 @@
+
+@import '/weui.wxss';
+page{
+  font-size: 32rpx;
+  background: #f5f5f5;
+  position: relative;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
