@@ -44,5 +44,6 @@
 
 <!-- 支付 -->
 <view class="pay" bind:tap="onPay">
-  <view class="request-pay">生成订单</view>
+  <view class="pay-option confirm">立即支付</view>
+  <view class="pay-option cancel">取消订单</view>
 </view>

@@ -12,7 +12,8 @@
     "pages/goods/goods",
     "pages/publish/publish",
     "pages/publish_my/publish_my",
-    "pages/publish_list/publish_list"
+    "pages/publish_list/publish_list",
+    "pages/pay/pay"
   ],
   "window": {
     "backgroundTextStyle": "light",

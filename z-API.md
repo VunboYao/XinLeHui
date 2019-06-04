@@ -12,7 +12,34 @@
 ## 首页
 
 - 首页店铺： `/shop/ShopList`
+
 - 获取轮播图： `/shop/BannerList`
+
+- 首页新闻列表： http://gy.ginmery.com/api/shop/NewsList?page=&take= (参数省略)
+
+  ```javascript
+  {
+      page: 1,
+      take: 5
+  }
+  ```
+
+- 首页轮播跳转链接
+  - 新闻页面： news
+  - 商品页面：goods
+  - 店铺页面：shop
+
+## 新闻
+
+- 新闻信息： `/shop/NewsInfo`
+
+  ```javascript
+  {
+      id: ?
+  }
+  ```
+
+  
 
 ## 商品
 
@@ -62,3 +89,27 @@
   ```
 
   
+
+## 店铺
+
+- 店铺详情：`/shop/ShopDeatils`
+
+  ```javascript
+  {
+      id: ?
+  }
+  ```
+
+- 店铺商品列表: `/shop/GoodsListData`
+
+  ```javascript
+  {
+      shopid: ?,
+      page: ?,
+      search: ?,
+      sort: ?
+  }
+  ```
+
+  ![img](file:///C:\Users\YYB\Documents\Tencent Files\1136025472\Image\C2C\I@RSCOATSZFB7E`WT}N105K.png)
+

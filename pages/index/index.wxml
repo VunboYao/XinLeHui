@@ -8,7 +8,7 @@
     <block wx:for='{{swiperList}}' wx:key="index">
       <swiper-item>
         <navigator url="/pages/goods/goods">
-          <image src='{{item.image_url}}' class='swiper-image'></image>
+          <image src='{{item.banner_image_url}}' class='swiper-image'></image>
         </navigator>
       </swiper-item>
     </block>
@@ -20,7 +20,7 @@
           <swiper-item>
             <navigator url='./../index/index' class='show-text'>
               <text class='tui_text'>推荐</text>
-              <text class='tui_item'>{{item}}</text>
+              <text class='tui_item'>{{item.news_title}}</text>
             </navigator>
           </swiper-item>
         </block>

@@ -11,10 +11,10 @@
   </view>
 
   <view class="introduce-section">
-    <text class="title">恒源祥2019春季长袖白色t恤 新款春装</text>
+    <text class="title">{{goodsInfo.goods_name}}</text>
     <view class="price-box">
       <text class="price-tip">¥</text>
-      <text class="price">341.6</text>
+      <text class="price">{{goodsInfo.goods_price}}</text>
       <text class="m-price">(公益金5元)</text>
     </view>
     <view class="bot-row">

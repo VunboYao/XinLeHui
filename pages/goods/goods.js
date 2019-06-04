@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    goodsInfo: {},
     specClass: true,
     specSelected: ['X', '白色'],
     nodes: `<div style="text-align:center;">《静夜思》· 李白<br />床前明月光，<br />疑是地上霜。 <br />举头望明月， <br />低头思故乡。<br /><img src="http://www.xiexingcun.com/Poetry/6/images/53e.jpg" alt="" /><br /><img src="http://www.xiexingcun.com/Poetry/6/images/53.jpg" alt="" /><br /><br /><img src="http://www.xiexingcun.com/Poetry/6/images/53b.jpg" alt="" /><br /></div>`,
@@ -109,9 +110,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    // 获取数据
-    api.getGoodsDetails('5cf4db325360f633f03c3461').then(res => {
-      console.log(res);
+    // 获取数据----------假ID
+    api.getGoodsDetails('1').then(res => {
+      this.setData({
+        goodsInfo: res.datas.goods_info
+      })
     })
   },
 

@@ -49,8 +49,6 @@ Page({
   },
 
   onPay() {
-    wx.navigateTo({
-      url: '/pages/pay/pay'
-    })
+
   }
 })

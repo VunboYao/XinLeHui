@@ -27,22 +27,20 @@ Page({
     // 2. 首页轮播
     const req2 = api.getBannerList();
     // 3. 首页推荐新闻
+    const req3 = api.getNewList()
 
     // 请求数据
-    let indexData = Promise.all([req1, req2]);
+    let indexData = Promise.all([req1, req2, req3]);
     indexData.then(res => {
-      let req1 = res[0]
-      let req2 = res[1]
-      // 轮播
-      if (req2.code == 1) {
-        this.setData({
-          swiperList: req2.datas.banner_list
-        })
-      }
+      let shopList = res[0]
+      let swiperList = res[1]
+      let news = res[2]
 
-      // 热门店铺
+      // 更新数据
       this.setData({
-        shopList: req1.datas
+        shopList: shopList.datas,
+        swiperList: swiperList.datas.banner_list,
+        news: news.datas.news_list,
       })
     })
   },

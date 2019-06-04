@@ -33,6 +33,7 @@ class Goods extends HTTP {
     })
 
   }
+
 }
 
 export {

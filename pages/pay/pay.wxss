@@ -1,0 +1,160 @@
+.container {
+  background-color: #EBEBEB;
+  overflow: hidden;
+  margin-bottom: 120rpx;
+}
+
+/* 购物清单 */
+.header {
+  margin-top: 18rpx;
+  background-color: #fff;
+}
+
+/* 标题 */
+.header-title {
+  height: 86rpx;
+  line-height: 86rpx;
+  padding: 0 30rpx;
+  font-weight: 600;
+  border-bottom: 1rpx solid #ddd;
+}
+
+/* 列表 */
+.header-list {
+  padding: 0 30rpx;
+}
+
+.header-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 136rpx;
+  width: 100%;
+  border-bottom: 1px solid #eee;
+}
+
+/* 图片 */
+.header-item-img {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 4rpx;
+}
+
+/* 名称 */
+.header-item-title {
+  font-size: 30rpx;
+  width: 420rpx;
+  white-space: wrap;
+}
+
+/* 数量 */
+.header-item-amount {
+  text-align: right;
+  min-width: 160rpx;
+  font-size: 26rpx;
+}
+
+.item-money {
+  font-size: 26rpx;
+  color: #FE6702;
+}
+
+/* 地址 */
+.address {
+  margin-top: 18rpx;
+  background-color: #fff;
+}
+
+.address-title {
+  height: 86rpx;
+  line-height: 86rpx;
+  padding: 0 30rpx;
+  font-weight: 600;
+  border-bottom: 1px solid #ddd;
+}
+
+.address-detail {
+  padding: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.address-detail-intro {
+  width: 600rpx;
+}
+
+.address-detail-none {
+  display: flex;
+  justify-content: center;
+  width: 600rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  color: #ccc;
+}
+
+.address-detail-more {
+  width: 24rpx;
+  height: 24rpx;
+}
+
+/* 订单 */
+.order {
+  margin-top: 18rpx;
+  padding: 0 30rpx;
+  height: 86rpx;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  background-color: #fff;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-title {
+  font-weight: 600;
+  font-size: 36rpx;
+}
+
+.order-money {
+  color: #FE6702;
+}
+
+.express {
+  padding: 0 30rpx;
+  height: 86rpx;
+  display: flex;
+  background-color: #fff;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.express-money {
+  color: #FE6702;
+}
+
+/* 支付 */
+.pay {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100rpx;
+  color: #fff;
+  display: flex;
+  justify-content: space-around;
+}
+
+.pay-option {
+  padding: 0 60rpx;
+  margin: 0 30rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 32rpx;
+  background-color: #09bb07;
+  border-radius: 50rpx;
+}
+
+.cancel {
+  background-color: #e64340;
+}

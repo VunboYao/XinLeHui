@@ -45,7 +45,7 @@
 				{
 					"id": 0,
 					"name": "demo",
-					"pathName": "pages/publish_list/publish_list",
+					"pathName": "pages/cart/cart",
 					"query": "",
 					"scene": null
 				}
