@@ -1,4 +1,6 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "公益"
+  "navigationBarTitleText": "公益",
+  "navigationBarBackgroundColor": "#1296DB",
+  "navigationBarTextStyle": "white"
 }

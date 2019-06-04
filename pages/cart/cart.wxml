@@ -1,84 +1,28 @@
-<block wx:if="{{carList.length > 0}}">
-  <view class="container">
-    <view
-      class="cart-item"
-      wx:for="{{carList}}"
-      wx:for-item="goods"
-      wx:for-index="goodsId"
-      wx:key="{{goodsId}}">
-      <!-- 图片 -->
-      <view class="image-wrapper">
-        <image
-          class="goods-avatar"
-          bind:tap="onSelected"
-          data-id="{{goods.id}}"
-          src="{{goods.image}}"></image>
-        <icon
-          class="goods-select"
-          type="success"
-          size="20"
-          bind:tap="onSelected"
-          data-id="{{goods.id}}"
-          color="{{goods.checked ? selectedColor: color}}"></icon>
-      </view>
-      <!-- 详情 -->
-      <view class="goods-info">
-        <text class="goods-title-h1">{{goods.title}}</text>
-        <text class="goods-title-h2">{{goods.attr_val}}</text>
-        <text class="goods-price">¥ {{goods.price}}</text>
-        <!-- 加减数量 -->
-        <view class="goods-increment">
-          <text
-            bind:tap="onDown"
-            data-id="{{goods.id}}"
-            data-number="{{goods.number}}"
-            class="{{goods.number == 1 ? 'goods-increment_icon_dis' : 'goods-increment_icon'}}">-</text>
-          <input
-            class="goods-number"
-            type="number"
-            data-id="{{goods.id}}"
-            data-stock="{{goods.stock}}"
-            bind:blur="onBlur"
-            value="{{goods.number}}"></input>
-          <text
-            bind:tap="onAdd"
-            data-id="{{goods.id}}"
-            data-number="{{goods.number}}"
-            data-stock="{{goods.stock}}"
-            class="{{goods.number == goods.stock ? 'goods-increment_icon_dis' : 'goods-increment_icon'}}">+</text>
-        </view>
-      </view>
-      <!-- 删除 -->
-      <icon
-        class="goods-delete"
-        type="clear"
-        data-id="{{goods.id}}"
-        bind:tap="onDelete"
-        size="21"></icon>
-    </view>
+<scroll-view class="scroll-view">
+  <view class="tab-list">
+    <view bind:tap="changeIndex" class="tab-item {{index === 0 ? 'active' : ''}}" data-index="0">全部</view>
+    <view bind:tap="changeIndex" class="tab-item {{index === 1 ? 'active' : ''}}" data-index="1">待付款</view>
+    <view bind:tap="changeIndex" class="tab-item {{index === 2 ? 'active' : ''}}" data-index="2">待收货</view>
   </view>
-  <!-- 全选/总计 -->
-  <view class="bottom-action">
-    <view class="billing-detail">
-      <view class="checkbox">
-        <icon
-          bind:tap="onSelectAll"
-          class="checkbox-toggleAll"
-          color="{{toggleAll ? selectedColor : color}}"
-          type="success"></icon>
-        <text class="checkbox-tip">全选</text>
-      </view>
-      <view class="billing-text">
-        合计: <text
-          class="{{totalMoney ? 'billing-num' : 'billing-num-none'}}">{{totalMoney}}元</text>
-      </view>
-    </view>
-    <view
-      bind:tap="onSettlement"
-      class="{{totalAmount ? 'billing-pay' : 'billing-none'}}">结算 ({{totalAmount}})</view>
-  </view>
-</block>
-<view class="no-goods" wx:else>
-  <image class="car-none" src="../../images/car-none.png"></image>
-  <text class="no-goods-tip">购物车空空如也,快去添加吧~</text>
+</scroll-view>
+
+<view class="container">
+  <!-- 全部 -->
+  <block wx:if="{{index === 0}}">
+    <block wx:for="{{orderList}}" wx:for-item="goods" wx:for-index="goodsId" wx:key="{{goodsId}}">
+      <order-item class="order-item" goods="{{goods}}"></order-item>
+    </block>
+  </block>
+  <!-- 待付款 -->
+  <block wx:if="{{index === 1}}">
+    <block wx:for="{{noPay}}" wx:for-item="goods" wx:for-index="goodsId" wx:key="{{goodsId}}">
+      <order-item goods="{{goods}}"></order-item>
+    </block>
+  </block>
+  <!-- 待收货 -->
+  <block wx:if="{{index === 2}}">
+    <block wx:for="{{noCatch}}" wx:for-item="goods" wx:for-index="goodsId" wx:key="{{goodsId}}">
+      <order-item bind:confirm="confirmGoods" goods="{{goods}}"></order-item>
+    </block>
+  </block>
 </view>
