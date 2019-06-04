@@ -1,47 +1,98 @@
-import order from './../../json.js'
-
-// pages/order/order.js
+import order from '../../json.js'
+// pages/test/test.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    currentIndex: 0,
-    windowHeight: 0,
+    index: 0,
     orderList: [],
-    tabList: ['全部', '待付款', '待收货']
+    noPay: [],
+    noCatch: []
   },
-  // 切换Swiper
-  switchTab(e) {
-    let currentIndex = e.detail.current
-    this.setData({
-      currentIndex: currentIndex
-    })
+
+  changeIndex(e) {
+    const currentIndex = Number(e.currentTarget.dataset.index)
+    if (currentIndex === this.data.index) {
+      return
+    }
+     wx.showLoading({
+       'title': '加载中'
+     })
+    // 根据 index 读取缓存数据
+    this._getStorage(currentIndex)
   },
-  // 选择 tab
-  selectTab(e) {
-    let index = e.currentTarget.dataset.index
+
+  // 确认收货
+  confirmGoods(e) {
+    // 根据订单id, 支付, 重新加载
+    let orderId = e.detail.orderId
+    console.log(orderId);
+
+    // post 改变状态
+    let index = this.data.noCatch.findIndex(element => {
+      return element.orderId === orderId
+    });
+    console.log(index);
+    this.data.noCatch.splice(index, 1);
     this.setData({
-      currentIndex: index
+      noCatch: this.data.noCatch
     })
+
+  },
+
+  // 读取缓存
+  _getStorage(index) {
+    const data = wx.getStorageSync('orderData')
+    let tempArr = []
+
+    // 全部
+    if (index === 0) {
+      this.setData({
+        index: index,
+        orderList: data
+      })
+    }
+    // 待付款
+    if (index === 1) {
+      data.forEach(element => {
+        if (element.state === 0) {
+          tempArr.push(element)
+        }
+      });
+      this.setData({
+        index: index,
+        noPay: tempArr
+      })
+    }
+
+    // 待收货
+    if (index === 2) {
+      data.forEach(element => {
+        if (element.state === 1) {
+          tempArr.push(element)
+        }
+      });
+      this.setData({
+        index: index,
+        noCatch: tempArr
+      })
+    }
+    wx.hideLoading()
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.getSystemInfo({
-      success: (res) => {
-        let windowHeight = res.windowHeight
-        let drp = res.pixelRatio
-
-        windowHeight = windowHeight - Number(80 / drp.toFixed(2))
-        this.setData({
-          windowHeight: windowHeight,
-          orderList: order.orderList
-        })
-      }
+    order.orderList.map(item => {
+      return item.orderId = 3
     })
+    this.setData({
+      orderList: order.orderList
+    })
+    wx.setStorageSync('orderData', order.orderList)
   },
+
 })

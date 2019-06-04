@@ -1,2 +1,14 @@
-<!--pages/publish_list/publish_list.wxml-->
-<text>pages/publish_list/publish_list.wxml</text>
+<view class="container">
+  <navigator class="item" url="/pages/publish_my/publish_my">
+    <view class="item">
+      <view class="avatar-wrap">
+        <image class="item-avatar" src="/images/vue.png"></image>
+      </view>
+      <view class="item-desc">
+        <text class="item-title">7岁地贫女孩的7岁地女孩</text>
+        <button wx:if="{{status}}" type="primary" size="mini" class="item-status">进行中</button>
+        <button wx:else type="" size="mini" class="item-status">已结束</button>
+      </view>
+    </view>
+  </navigator>
+</view>

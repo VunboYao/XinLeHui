@@ -1,36 +1,28 @@
+<scroll-view class="scroll-view">
+  <view class="tab-list">
+    <view bind:tap="changeIndex" class="tab-item {{index === 0 ? 'active' : ''}}" data-index="0">全部</view>
+    <view bind:tap="changeIndex" class="tab-item {{index === 1 ? 'active' : ''}}" data-index="1">待付款</view>
+    <view bind:tap="changeIndex" class="tab-item {{index === 2 ? 'active' : ''}}" data-index="2">待收货</view>
+  </view>
+</scroll-view>
+
 <view class="container">
-   <!-- tab -->
-   <scroll-view class="scroll-tab" scroll-x>
-     <view class="tab-list">
-       <text
-        wx:for="{{tabList}}"
-        wx:key="{{index}}"
-        bind:tap="selectTab"
-        class="tab-all {{currentIndex == index ? 'currentActive' : ''}}"
-        data-index="{{index}}">{{item}}</text>
-     </view>
-   </scroll-view>
-
-   <!-- 商品列表 -->
-   <view class="goods-list">
-     <swiper
-      current="{{currentIndex}}"
-      duration="300"
-      bind:change="switchTab"
-      style="height:{{windowHeight}}px"
-      class="swiper">
-      <swiper-item class="swiper-item" wx:for="{{3}}" wx:key="{{index}}">
-        <scroll-view scroll-y="true" class="scroll-y">
-          <block
-            wx:for="{{orderList}}"
-            wx:for-item="goods"
-            wx:for-index="goodsId"
-            wx:key="{{goodsId}}">
-            <order-item goods="{{goods}}"></order-item>
-          </block>
-        </scroll-view>
-      </swiper-item>
-     </swiper>
-   </view>
-
+  <!-- 全部 -->
+  <block wx:if="{{index === 0}}">
+    <block wx:for="{{orderList}}" wx:for-item="goods" wx:for-index="goodsId" wx:key="{{goodsId}}">
+      <order-item class="order-item" goods="{{goods}}"></order-item>
+    </block>
+  </block>
+  <!-- 待付款 -->
+  <block wx:if="{{index === 1}}">
+    <block wx:for="{{noPay}}" wx:for-item="goods" wx:for-index="goodsId" wx:key="{{goodsId}}">
+      <order-item goods="{{goods}}"></order-item>
+    </block>
+  </block>
+  <!-- 待收货 -->
+  <block wx:if="{{index === 2}}">
+    <block wx:for="{{noCatch}}" wx:for-item="goods" wx:for-index="goodsId" wx:key="{{goodsId}}">
+      <order-item bind:confirm="confirmGoods" goods="{{goods}}"></order-item>
+    </block>
+  </block>
 </view>

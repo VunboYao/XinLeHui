@@ -1,5 +1,4 @@
 {
-  "usingComponents": {
-    "order-item": "/components/orderItem/orderItem"
-  }
+  "usingComponents": {},
+  "navigationBarTitleText": "购物车"
 }
