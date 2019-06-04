@@ -1,1 +1,32 @@
 /* pages/publish/publish.wxss */
+page{
+  background: #fff;
+}
+.formContainer{
+  display: block;
+  padding: 0 20rpx 30rpx;
+  box-sizing: border-box;
+}
+.weui-cells__title{
+  padding-top: 30rpx;
+  margin-top: 0;
+  font-size: 32rpx;
+  color: #000;
+}
+.weui-cells:before,
+.weui-cells:after{
+  display: none;
+}
+.weui-input,
+.weui-textarea{
+  display: block;
+  box-sizing: border-box;
+  background: #f6f6f6;
+  border-radius: 6rpx;
+  font-size: 30rpx;
+  padding-left: 40rpx;
+}
+.weui-textarea {
+  height: 260rpx;
+  padding: 30rpx 40rpx;
+}

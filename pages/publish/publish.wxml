@@ -1,11 +1,88 @@
 <!--pages/publish/publish.wxml-->
 <view class='container'>
-  <form formsubmit='formSubmit'>
-    <view class="weui-cells__title">文本框</view>
+  <form formsubmit='formSubmit' class='formContainer'>
+    <view class="weui-cells__title">为谁发起</view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
         <view class="weui-cell__bd">
-          <input class="weui-input" placeholder="请输入文本" />
+          <input class="weui-input" name='name' placeholder="填写需要帮助ta的姓名" />
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-cells__title">需要多少钱</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <input class="weui-input" name='money' placeholder="填写希望筹到的金额" />
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-cells__title">写一个标题</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <input class="weui-input" name='title' placeholder="填写您的发起标题" />
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-cells__title">说说详细情况</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" name='details' placeholder="{{textarea}}" />
+        </view>
+      </view>
+    </view>
+
+    <view class='weui-cells weui-cells_after-title'>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <view class="weui-uploader">
+            <view class="weui-uploader__hd">
+              <view class="weui-uploader__title">添加图片（非必填）</view>
+              <!-- <view class="weui-uploader__info">{{files.length}}/2</view> -->
+            </view>
+            <view class="weui-uploader__bd">
+              <view class="weui-uploader__files" id="imgFiles">
+                <block wx:for="{{imagesFiles}}" wx:key="*this">
+                  <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+                    <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                  </view>
+                </block>
+              </view>
+              <view class="weui-uploader__input-box">
+                <view class="weui-uploader__input" bindtap="chooseImage"></view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='weui-cells weui-cells_after-title'>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <view class="weui-uploader">
+            <view class="weui-uploader__hd">
+              <view class="weui-uploader__title">添加视频（非必填）</view>
+              <!-- <view class="weui-uploader__info">{{files.length}}/2</view> -->
+            </view>
+            <view class="weui-uploader__bd">
+              <view class="weui-uploader__files" id="videoFiles">
+                <block wx:for="{{videoFiles}}" wx:key="*this">
+                  <view class="weui-uploader__file" bindtap="previewVideo" id="{{item}}">
+                    <video class="weui-uploader__img" src="{{item}}" />
+                  </view>
+                </block>
+              </view>
+              <view class="weui-uploader__input-box">
+                <view class="weui-uploader__input" bindtap="chooseVideo"></view>
+              </view>
+            </view>
+          </view>
         </view>
       </view>
     </view>
