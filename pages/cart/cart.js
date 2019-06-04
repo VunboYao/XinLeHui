@@ -1,4 +1,8 @@
 import data from '../../json.js'
+import { Cart } from "./../../models/cart";
+
+const api = new Cart()
+
 Page({
   /**
    * 页面的初始数据

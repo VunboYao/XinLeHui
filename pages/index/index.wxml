@@ -7,7 +7,9 @@
   <swiper class='swiper' indicator-dots='{{indicatorDots}}' autoplay='{{autoplay}}' interval='{{interval}}' duration='{{duration}}' circular indicator-active-color='#FEC92E' indicator-color='#ffffff'>
     <block wx:for='{{swiperList}}' wx:key="index">
       <swiper-item>
-        <image src='{{item.image_url}}' class='swiper-image'></image>
+        <navigator url="/pages/goods/goods">
+          <image src='{{item.image_url}}' class='swiper-image'></image>
+        </navigator>
       </swiper-item>
     </block>
   </swiper>
@@ -31,11 +33,11 @@
   <view class='shop-container'>
     <view class="weui-cells__title">热门</view>
     <view class='shop-list'>
-      <block wx:for='{{shopList}}' wx:key="index">
-        <navigator url='./../shop/shop' class='shop'>
-          <image src='{{item.shopImg}}'></image>
-          <view class='shop-name'>{{item.shopName}}</view>
-          <view class='shop-intro'>{{item.shopIntro}}</view>
+      <block wx:for='{{shopList}}' wx:key="_id">
+        <navigator url='./../shop/shop?id={{item._id}}' class='shop'>
+          <image src='{{item.images}}'></image>
+          <view class='shop-name'>{{item.name}}</view>
+          <view class='shop-intro'>{{item.description}}</view>
         </navigator>
       </block>
     </view>
