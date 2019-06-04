@@ -10,7 +10,10 @@
     "pages/search/search",
     "pages/shop/shop",
     "pages/login/login",
-    "pages/goods/goods"
+    "pages/goods/goods",
+    "pages/publish/publish",
+    "pages/publish_my/publish_my",
+    "pages/publish_list/publish_list"
   ],
   "window": {
     "backgroundTextStyle": "light",

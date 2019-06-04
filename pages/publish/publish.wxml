@@ -1,0 +1,13 @@
+<!--pages/publish/publish.wxml-->
+<view class='container'>
+  <form formsubmit='formSubmit'>
+    <view class="weui-cells__title">文本框</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入文本" />
+        </view>
+      </view>
+    </view>
+  </form>
+</view>

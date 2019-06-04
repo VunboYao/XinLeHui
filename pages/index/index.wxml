@@ -5,9 +5,9 @@
     </view>
   </navigator>
   <swiper class='swiper' indicator-dots='{{indicatorDots}}' autoplay='{{autoplay}}' interval='{{interval}}' duration='{{duration}}' circular indicator-active-color='#FEC92E' indicator-color='#ffffff'>
-    <block wx:for='{{imgUrls}}' wx:key="index">
+    <block wx:for='{{swiperList}}' wx:key="index">
       <swiper-item>
-        <image src='{{item}}' class='swiper-image'></image>
+        <image src='{{item.image_url}}' class='swiper-image'></image>
       </swiper-item>
     </block>
   </swiper>

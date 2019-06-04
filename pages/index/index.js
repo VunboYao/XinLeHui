@@ -12,11 +12,7 @@ Page({
     autoplay: true,
     interval: 3000,
     duration: 1000,
-    imgUrls: [
-  'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
-  'https://images.unsplash.com/photo-1551214012-84f95e060dee?w=640',
-  'https://images.unsplash.com/photo-1551446591-142875a901a1?w=640'
-    ],
+    swiperList: [],
     news: [
       '平安夜，百人祝福领取苹果~',
       '寒流来袭，你的秋裤准备好了吗？',
@@ -51,6 +47,13 @@ Page({
     indexData.then(res => {
       console.log(res[0]);
       console.log(res[1]);
+      let req1 = res[0]
+      let req2 = res[1]
+      if (req2.code == 1) {
+        this.setData({
+          swiperList: req2.datas.banner_list
+        })
+      }
     })
   },
 })
