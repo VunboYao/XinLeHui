@@ -1,1 +1,102 @@
 /* pages/publish_my/publish_my.wxss */
+page{
+  height: 100%;
+  background: #fff;
+}
+.page{
+  padding: 30rpx;
+}
+
+.header{
+  padding-bottom: 30rpx;
+  border-bottom: 1rpx solid #eee;
+}
+.header .title{
+  font-size: 46rpx;
+  font-weight: bold;
+}
+/* userInfo */
+.header .userInfo{
+  margin: 16rpx 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28rpx;
+}
+.header .left{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #666;
+}
+.header .left image{
+  width: 68rpx;
+  height: 68rpx;
+  border-radius: 50%;
+  margin-right: 6rpx;
+}
+.header .meTo{
+  display: block;
+  padding: 6rpx 20rpx;
+  color: orangered;
+  border: 2rpx solid orangered;
+  border-radius: 6rpx;
+  font-size: 28rpx;
+}
+/* money */
+.header .moneyBox{
+  width: 100%;
+  height: 160rpx;
+  background: #f8f7f3;
+  display: flex;
+}
+.moneyBox .box{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.moneyBox .num{
+  font-size: 42rpx;
+  color: #6D0317;
+}
+.moneyBox .txt{
+  font-size: 28rpx;
+  color: #666;
+}
+.header .tipBox{
+  margin-top: 30rpx;
+  display: flex;
+  align-items: center;
+  font-size: 30rpx;
+}
+.tipBox .i{
+  border: 1rpx solid orangered;
+  color: orangered;
+  font-size: 28rpx;
+  line-height: 35rpx;
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 6rpx;
+  text-align: center;
+  margin-right: 10rpx;
+}
+
+.section{}
+.section .title{
+  line-height: 80rpx;
+  font-size: 38rpx;
+  font-weight: bold;
+  color: #000;
+}
+/* 详情 */
+.intro-text{
+  display: block;
+  height: 200rpx;
+  overflow: hidden;
+}
+.showAll{
+  text-align: center;
+  color: orangered;
+}

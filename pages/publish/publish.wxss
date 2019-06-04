@@ -1,24 +1,25 @@
 /* pages/publish/publish.wxss */
-page{
+
+page {
   background: #fff;
 }
-.formContainer{
+
+.formContainer {
   display: block;
-  padding: 0 20rpx 30rpx;
+  padding: 0 0 30rpx;
   box-sizing: border-box;
 }
-.weui-cells__title{
+
+.weui-cells__title {
   padding-top: 30rpx;
   margin-top: 0;
   font-size: 32rpx;
   color: #000;
 }
-.weui-cells:before,
-.weui-cells:after{
+.weui-cells:before, .weui-cells:after {
   display: none;
 }
-.weui-input,
-.weui-textarea{
+.weui-input, .weui-textarea {
   display: block;
   box-sizing: border-box;
   background: #f6f6f6;
@@ -26,7 +27,41 @@ page{
   font-size: 30rpx;
   padding-left: 40rpx;
 }
+
+/* 上传图片 */
+.weui-uploader__bd {
+  margin-bottom: -8rpx;
+  margin-right: -18rpx;
+}
+.weui-uploader__file {
+  margin-right: 18rpx;
+  margin-bottom: 18rpx;
+}
+.weui-uploader__input-box, .weui-uploader__img {
+  width: 156rpx;
+  height: 156rpx;
+}
 .weui-textarea {
-  height: 260rpx;
+  height: 220rpx;
   padding: 30rpx 40rpx;
+}
+
+.tip {
+  width: 100%;
+  text-align: center;
+  margin: 20rpx 0 30rpx;
+  color: #999;
+  font-size: 30rpx;
+}
+.tip text {
+  color: orange;
+}
+
+.btn-area{
+  box-sizing: border-box;
+  padding: 0 30rpx;
+}
+.btn-submit {
+  color: #fff;
+  background: orange;
 }

@@ -1,0 +1,40 @@
+<!--publish_my/publish_my.wxml-->
+<view class='page'>
+  <view class='header'>
+    <view class='title'>我没钱，我要筹款！我没钱，我要筹款！</view>
+    <view class='userInfo'>
+      <view class='left'>
+        <image src='{{userInfo.avatarUrl}}'></image>
+        <view>{{userInfo.nickName}}</view>
+      </view>
+      <navigator class='meTo'>我也要筹款</navigator>
+    </view>
+    <view class='moneyBox'>
+      <view class='box'>
+        <view class='num'>60000</view>
+        <view class='txt'>目标金额</view>
+      </view>
+      <view class='box'>
+        <view class='num'>56789</view>
+        <view class='txt'>已筹金额</view>
+      </view>
+    </view>
+    <view class='tipBox'>
+      <view class='i'>零服务费</view>
+      <view class='t'>【心乐会】不收取任何服务费用</view>
+    </view>
+  </view>
+  <view class='detail section'>
+    <view class='title'>项目详情</view>
+    <view class='intro'>
+      <text class='intro-text'>{{intro}}</text>
+      <view class='showAll'>
+        <view class='txt'>展开全部</view>
+        <view class='i'>︾</view>
+      </view>
+    </view>
+  </view>
+  <view class='proof section'>
+    <view class='title'>资料证明</view>
+  </view>
+</view>

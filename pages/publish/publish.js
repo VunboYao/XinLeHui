@@ -7,7 +7,8 @@ Page({
   data: {
     textarea: '如实填写需要帮助人的信息，住再哪里，哪里人，患了什么病，家庭遇到的困难，已经花了多少钱，还需要多少等（不少于10个汉字）',
     imagesFiles: [],
-    videoFiles: []
+    videoFiles: [],
+    chooesVideo: ''
   },
   chooseImage: function (e) {
     var that = this;
@@ -37,21 +38,61 @@ Page({
       maxDuration: 60,
       camera: 'back',
       success (res) {
-        console.log(res.tempFilePath)
+        // console.log(res.tempFilePath)
         _this.setData({
           videoFiles: _this.data.videoFiles.concat(res.tempFilePath)
         })
       }
     })
   },
-  // previewVideo: function(e) {
-  //   const _this = this
-  //   const videoContext = _this.videoContext
-  //   _this.setData({
-
-  //   })
-  // },
-
+  previewVideo: function(e) {
+    // const _this = this
+    // const videoContext = wx.createVideoContext('previewV')
+    // console.log(e)
+    // this.setData({
+    //   chooesVideo: e.currentTarget.id
+    // })
+    // videoContext.seek(0)
+    // videoContext.play()
+    // videoContext.requestFullScreen()
+  },
+  formSubmit: function (e) {
+    console.log('form发生了submit事件，携带数据为：', e.detail.value)
+    const name = e.detail.value.name
+    const money = e.detail.value.money
+    const title = e.detail.value.title
+    const intro = e.detail.value.intro
+    if (!name) {
+      wx.showToast({
+        title: '请填写需要帮助人的姓名',
+        icon: 'none'
+      })
+      return
+    }
+    if (!money) {
+      wx.showToast({
+        title: '请填写希望筹到金额',
+        icon: 'none'
+      })
+      return
+    }
+    if (!title) {
+      wx.showToast({
+        title: '请为您的发起填写标题',
+        icon: 'none'
+      })
+      return
+    }
+    if (!intro) {
+      wx.showToast({
+        title: '请填写详细信息',
+        icon: 'none'
+      })
+      return
+    }
+    // 上传
+  },
+  
   /**
    * 生命周期函数--监听页面加载
    */
