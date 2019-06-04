@@ -1,4 +1,4 @@
-const host = 'https://gy.ginmery.com/api/'
+const host = 'https://gy.ginmery.com/api'
 export {
   host
 }

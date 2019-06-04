@@ -18,21 +18,7 @@ Page({
       '寒流来袭，你的秋裤准备好了吗？',
       '快收下，新鲜出炉冬季实用穿搭指南~'
     ],
-    shopList: [
-      {
-        "shopName": "这是个店铺吧",
-        "shopIntro": "充分的利用了房子的上下层空间，可同时满足休息与学习的双需求",
-        "shopImg": "https://gw.alicdn.com/imgextra/i1/1840730563/TB2KPDvXnAlyKJjSZPiXXXL2VXa_!!1840730563-0-beehive-scenes.jpg_360x10000Q75.jpg_.webp"
-      }, {
-        "shopName": "这是个店铺吧",
-        "shopIntro": "充分的利用了房子的上下层空间，可同时满足休息与学习的双需求",
-        "shopImg": "https://gw.alicdn.com/imgextra/i1/3107144874/TB2i9NXbwkLL1JjSZFpXXa7nFXa_!!3107144874-0-beehive-scenes.jpg_360x10000Q75.jpg_.webp"
-      }, {
-        "shopName": "这是个店铺吧",
-        "shopIntro": "充分的利用了房子的上下层空间，可同时满足休息与学习的双需求",
-        "shopImg": "https://gw.alicdn.com/imgextra/i1/1840730563/TB2KPDvXnAlyKJjSZPiXXXL2VXa_!!1840730563-0-beehive-scenes.jpg_360x10000Q75.jpg_.webp"
-      }
-    ]
+    shopList: []
   },
   onLoad: function () {
 
@@ -42,18 +28,22 @@ Page({
     const req2 = api.getBannerList();
     // 3. 首页推荐新闻
 
-    
+    // 请求数据
     let indexData = Promise.all([req1, req2]);
     indexData.then(res => {
-      console.log(res[0]);
-      console.log(res[1]);
       let req1 = res[0]
       let req2 = res[1]
+      // 轮播
       if (req2.code == 1) {
         this.setData({
           swiperList: req2.datas.banner_list
         })
       }
+
+      // 热门店铺
+      this.setData({
+        shopList: req1.datas
+      })
     })
   },
 })
