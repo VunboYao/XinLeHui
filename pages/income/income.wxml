@@ -1,0 +1,43 @@
+<view class="container">
+  <text class="total">合计: 9999元</text>
+
+  <!-- 选项 -->
+  <view class="option">
+    <button
+      size="mini"
+      bind:tap="onOption"
+      type="{{active ? 'primary' : ''}}"
+      class="income">收入</button>
+    <button
+      size="mini"
+      bind:tap="onOption"
+      type="{{!active ? 'primary' : ''}}"
+      class="expend">支出</button>
+  </view>
+
+  <!-- 列表 -->
+  <view class="list" wx:if="{{active}}">
+    <view class="item">
+      <view class="item-left">
+        <text class="item-title">爱心捐助爱心捐助爱心捐助爱心捐助爱心捐助</text>
+        <text class="item-time">2019-5-6 12:12:12</text>
+      </view>
+      <view class="item-right">
+        <image class="icon" src="/images/add.png"></image>
+        <text class="details">5.00元</text>
+      </view>
+    </view>
+  </view>
+  <view class="list" wx:else>
+     <view class="item">
+       <view class="item-left">
+         <text class="item-title">爱心捐助爱心捐助爱心捐助爱心捐助爱心捐助</text>
+         <text class="item-time">2019-5-6 12:12:12</text>
+       </view>
+       <view class="item-right">
+         <image class="icon" src="/images/down.png"></image>
+         <text class="details">5.00元</text>
+       </view>
+     </view>
+  </view>
+</view>
