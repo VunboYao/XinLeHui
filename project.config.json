@@ -40,20 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
-			"list": [
-				{
-					"id": -1,
-<<<<<<< HEAD
-					"name": "publish",
-					"pathName": "pages/publish/publish",
-=======
-					"name": "income",
-					"pathName": "pages/income/income",
->>>>>>> 873130da415f6c6191d5ed6fb484184e92421594
-					"scene": null
-				}
-			]
+			
 		}
 	}
 }

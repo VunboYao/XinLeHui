@@ -15,8 +15,7 @@
     <view class="price-box">
       <text class="price-tip">¥</text>
       <text class="price">341.6</text>
-      <text class="m-price">¥488</text>
-      <text class="coupon-tip">7折</text>
+      <text class="m-price">(公益金5元)</text>
     </view>
     <view class="bot-row">
       <text>销量: 108</text>

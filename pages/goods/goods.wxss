@@ -76,7 +76,6 @@ page {
 .introduce-section .m-price {
   margin: 0 12rpx;
   color: #909399;
-  text-decoration: line-through;
 }
 
 .introduce-section .coupon-tip {
