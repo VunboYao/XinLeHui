@@ -35,6 +35,7 @@ Page({
       let shopList = res[0]
       let swiperList = res[1]
       let news = res[2]
+
       // 更新数据
       this.setData({
         shopList: shopList.datas,

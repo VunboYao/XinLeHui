@@ -13,7 +13,8 @@
     "pages/publish/publish",
     "pages/publish_my/publish_my",
     "pages/publish_list/publish_list",
-    "pages/pay/pay"
+    "pages/pay/pay",
+    "pages/news/news"
   ],
   "window": {
     "backgroundTextStyle": "light",

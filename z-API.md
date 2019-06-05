@@ -55,7 +55,7 @@
   {
       goods_id: ?,
       quantity: 1,
-      userid: ?
+      sessionid: ?
   }
   ```
 
@@ -65,7 +65,7 @@
 
   ```javascript
   {
-      userid: ? // 用户id
+      sessionid: ? // 用户id
   }
   ```
 
@@ -75,11 +75,12 @@
 
   ```javascript
   {
-      cart_id: ? // 商品id
+      cart_id: ?， // 商品id
+      sessionid: ?
   }
   ```
 
-- 修改购物车商品数量: **POST**, `/shop/UpdateShopCart`
+- 修改购物车商品数量: **POST**, `/shop/UpdateShopCart`, **退出时发起请求**
 
   ```javascript
   {
@@ -112,6 +113,47 @@
   ```
 
   ![img](file:///C:\Users\YYB\Documents\Tencent Files\1136025472\Image\C2C\I@RSCOATSZFB7E`WT}N105K.png)
+
+## 订单
+
+- **提交订单** ： /shop/PayOrder **POST**
+
+  ```javascript
+  {
+      data: {
+          "address": {}
+          "array": [{
+              "goodsid": "1",
+              "num": 0,
+          },
+          {
+              "goodsid": "1",
+              "num": 0,
+          }]
+  	}
+  ,
+      sessionid: ?
+  }
+      
+  ```
+
+- **校验订单**：`/shop/CheckOrder`  **POST**
+
+  ```javascript
+  {
+      data: {
+          [{
+              id:?,
+              number:?
+          }]
+      },
+      sessionid: ?
+  }
+  ```
+
+  
+
+  
 
 ## ??
 

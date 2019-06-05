@@ -18,13 +18,13 @@
       <swiper vertical autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular>
         <block wx:for="{{news}}" wx:key='{{index}}'>
           <swiper-item>
-            <navigator url='./../index/index' class='show-text'>
+            <navigator url='./../news/news?newsid={{item.news_id}}' class='show-text'>
               <text class='tui_text'>推荐</text>
               <text class='tui_item'>{{item.news_title}}</text>
             </navigator>
           </swiper-item>
         </block>
-      </swiper>
+    </swiper>
     </view>
     <view class='more'>
       <text>更多</text>

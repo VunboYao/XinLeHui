@@ -28,7 +28,7 @@ class Goods extends HTTP {
       data: {
         goods_id,         // 用户id
         quantity: count,  // 数量
-        userid: user_id,   // 用户id
+        sessionid: user_id, // 用户id
       }
     })
 

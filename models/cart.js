@@ -14,8 +14,9 @@ class Cart extends HTTP{
   getShopList(id) {
     return super.request({
       url: `${host}/shop/CartList`,
+      method: 'GET',
       data: {
-        userid: id // 用户id
+        sessionid: id // 用户id
       }
     })
   }
@@ -40,6 +41,15 @@ class Cart extends HTTP{
         cart_id: id,        // 商品id
         quantity: count     // 商品数量
       }
+    })
+  }
+
+  // 校验订单
+  checkOrder(data,userId) {
+    return super.request({
+      url: `${host}/shop/CheckOrder`,
+      data: data,
+      sessionid: userId
     })
   }
 }

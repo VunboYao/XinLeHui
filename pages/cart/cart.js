@@ -1,7 +1,9 @@
-import data from '../../json.js'
 import { Cart } from "./../../models/cart";
 
+// 实例购物车类
 const api = new Cart()
+// 获取登录态
+const userKey = wx.getStorageSync('loginFlag');
 
 Page({
   /**
@@ -11,6 +13,7 @@ Page({
     carList: [],
     selectedColor: '#09BB07',
     color: '#b2b2b2',
+    userAddress: {},
     toggleAll: false,
     totalMoney: 0,
     totalAmount: 0
@@ -20,12 +23,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let cartListData = data.cartList.map(item => {
-      item.checked = false
-      return item;
-    })
-    this.setData({
-      carList: cartListData
+    const userKey = wx.getStorageSync('loginFlag');
+    // 获取购物车数据
+    api.getShopList(userKey).then(res => {
+      // 更新数据
+      if (res.code === 1) {
+        this.setData({
+          carList: res.datas.cart_list[0].goods
+        })
+      } else {
+        wx.showToast({
+          title: '网络错误',
+          icon: 'none'
+        })
+      }
     })
   },
 
@@ -33,12 +44,13 @@ Page({
   onSelected(e) {
     // 获取商品id
     let goodsId = e.currentTarget.dataset.id
+
     // 根据id 获取对应 index 设置 数据
     let index = this._getGoodsIndex(goodsId)
-    this.data.carList[index].checked = !this.data.carList[index].checked
+    this.data.carList[index].check = !this.data.carList[index].check
 
     /* 全部为 true 则全选 */
-    let bCallback = this.data.carList.every(item => item.checked === true)
+    let bCallback = this.data.carList.every(item => item.check === true)
     if (bCallback) {
       this.data.toggleAll = true
     } else {
@@ -127,7 +139,7 @@ Page({
     this.data.carList.splice(index, 1)
 
     /* 全部为 true 则全选 */
-    let bCallback = this.data.carList.every(item => item.checked === true)
+    let bCallback = this.data.carList.every(item => item.check === true)
     if (bCallback) {
       this.data.toggleAll = true
     } else {
@@ -150,7 +162,7 @@ Page({
   onSelectAll() {
     this.data.toggleAll = !this.data.toggleAll
     this.data.carList.forEach(element => {
-      element.checked = this.data.toggleAll
+      element.check = this.data.toggleAll
     });
 
     /* 计算金额/数量 */
@@ -171,17 +183,19 @@ Page({
       wx.showLoading({
         title: '请等待'
       })
-      let tempArr = []
+
+      // 选中数组
+      let selectArray = []
       this.data.carList.forEach(item => {
-        if (item.checked) {
-          tempArr.push(item)
+        if (item.check) {
+          tempArr.push({"goodsid": item,"num": item})
         }
       })
       // 存入缓存
-      wx.setStorageSync('orderList', tempArr)
-      wx.navigateTo({
+      // wx.setStorageSync('orderList', tempArr)
+     /*  wx.navigateTo({
         url: '/pages/settlement/settlement?totalMoney=' + this.data.totalMoney
-      })
+      }) */
     }
   },
 
@@ -192,7 +206,7 @@ Page({
     let totalAmount = 0
     let totalMoney = 0
     this.data.carList.forEach(item => {
-      if (item.checked) {
+      if (item.check) {
         totalMoney += item.number * item.price
         totalAmount += item.number
       }
@@ -204,7 +218,7 @@ Page({
   /* 根据 id 获取商品 index */
   _getGoodsIndex(goodsId) {
     return this.data.carList.findIndex(item => {
-      return item.id == goodsId
+      return item.goods_id == goodsId
     })
   },
 
