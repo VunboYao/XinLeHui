@@ -1,5 +1,6 @@
-
-import { Goods } from "./../../models/goods";
+import {
+  Goods
+} from "./../../models/goods";
 
 const api = new Goods()
 
@@ -107,9 +108,11 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     // 商品id 获取数据
     const goodsId = options.goodsid;
+
+    // 获取商品详情
     api.getGoodsDetails(goodsId).then(res => {
       this.setData({
         goodsInfo: res.datas.goods_info
@@ -117,4 +120,25 @@ Page({
     })
   },
 
+  /* 添加购物车 */
+  onAddCart() {
+    const goodsId = this.data.goodsInfo.goods_id;
+    const userKey = wx.getStorageSync('loginFlag');
+    if (goodsId) {
+      api.addGoodsCart(goodsId, userKey).then(res => {
+        console.log(res);
+        if (res.code === 1) {
+          wx.showToast({
+            title: '加入成功',
+            icon: 'success'
+          })
+        } else {
+          wx.showToast({
+            title: 'error',
+            icon: 'none'
+          })
+        }
+      })
+    }
+  }
 })

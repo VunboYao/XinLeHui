@@ -10,7 +10,8 @@
 		"minified": true,
 		"newFeature": true,
 		"autoAudits": false,
-		"checkInvalidKey": true
+    "checkInvalidKey": true,
+    "checkSiteMap": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.7.0",
@@ -40,13 +41,13 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
 					"name": "demo",
-					"pathName": "pages/cart/cart",
-					"query": "",
+					"pathName": "pages/news/news",
+					"query": "id='1'",
 					"scene": null
 				},
 				{

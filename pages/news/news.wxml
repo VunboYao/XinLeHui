@@ -1,0 +1,19 @@
+<view class="container" wx:if="{{news}}">
+  <text class="news-title">{{news.news_title}}</text>
+  <text class="news-time">{{tool.formatTime(news.news_createtime)}}</text>
+  <text class="news-desc">{{news.news_description}}</text>
+  <image class="news-image" src="{{news.news_image}}"></image>
+  <rich-text class="news-content" nodes="{{news.news_context}}"></rich-text>
+</view>
+
+<!-- 时间过滤 -->
+<wxs module="tool">
+  var formatTime = function(str) {
+    var regexp = getRegExp('\d+','g');
+    var cb = regexp.exec(str);
+    return getDate(parseInt(cb)).toLocaleString();
+  }
+  module.exports = {
+    formatTime:formatTime
+  }
+</wxs>

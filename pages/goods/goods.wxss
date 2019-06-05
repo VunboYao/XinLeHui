@@ -54,6 +54,11 @@ page {
   line-height: 50rpx;
 }
 
+.goods-description {
+  font-size: 28rpx;
+  color: #666;
+}
+
 .introduce-section .price-box {
   display: -webkit-box;
   display: -webkit-flex;

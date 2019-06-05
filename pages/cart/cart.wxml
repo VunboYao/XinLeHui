@@ -5,54 +5,58 @@
       wx:for="{{carList}}"
       wx:for-item="goods"
       wx:for-index="goodsId"
-      wx:key="{{goodsId}}">
+      wx:key="goods.goods_id">
+
       <!-- 图片 -->
       <view class="image-wrapper">
         <image
           class="goods-avatar"
           bind:tap="onSelected"
-          data-id="{{goods.id}}"
-          src="{{goods.image}}"></image>
+          data-id="{{goods.goods_id}}"
+          src="{{goods.goods_image}}"></image>
         <icon
           class="goods-select"
           type="success"
           size="20"
           bind:tap="onSelected"
-          data-id="{{goods.id}}"
-          color="{{goods.checked ? selectedColor: color}}"></icon>
+          data-id="{{goods.goods_id}}"
+          color="{{goods.check ? selectedColor: color}}"></icon>
       </view>
+
       <!-- 详情 -->
       <view class="goods-info">
-        <text class="goods-title-h1">{{goods.title}}</text>
+        <text class="goods-title-h1">{{goods.goods_name}}</text>
         <text class="goods-title-h2">{{goods.attr_val}}</text>
-        <text class="goods-price">¥ {{goods.price}}</text>
+        <text class="goods-price">¥ {{goods.goods_price}}</text>
+
         <!-- 加减数量 -->
         <view class="goods-increment">
           <text
             bind:tap="onDown"
             data-id="{{goods.id}}"
             data-number="{{goods.number}}"
-            class="{{goods.number == 1 ? 'goods-increment_icon_dis' : 'goods-increment_icon'}}">-</text>
+            class="{{goods.goods_num == 1 ? 'goods-increment_icon_dis' : 'goods-increment_icon'}}">-</text>
           <input
             class="goods-number"
             type="number"
             data-id="{{goods.id}}"
             data-stock="{{goods.stock}}"
             bind:blur="onBlur"
-            value="{{goods.number}}"></input>
+            value="{{goods.goods_num}}"></input>
           <text
             bind:tap="onAdd"
-            data-id="{{goods.id}}"
-            data-number="{{goods.number}}"
-            data-stock="{{goods.stock}}"
-            class="{{goods.number == goods.stock ? 'goods-increment_icon_dis' : 'goods-increment_icon'}}">+</text>
+            data-id="{{goods.goods_id}}"
+            data-number="{{goods.goods_num}}"
+            data-stock="{{goods.goods_storage}}"
+            class="{{goods.goods_num == goods.goods_storage ? 'goods-increment_icon_dis' : 'goods-increment_icon'}}">+</text>
         </view>
       </view>
+
       <!-- 删除 -->
       <icon
         class="goods-delete"
         type="clear"
-        data-id="{{goods.id}}"
+        data-id="{{goods.goods_id}}"
         bind:tap="onDelete"
         size="21"></icon>
     </view>

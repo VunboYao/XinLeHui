@@ -37,7 +37,6 @@ Page({
 
     // 数据更新
     Promise.all([detail, shopGoods]).then(res => {
-      console.log(res[1].datas.goods_list);
       this.setData({
         shopInfo: res[0].datas.shop_info,
         goodsList: res[1].datas.goods_list,
