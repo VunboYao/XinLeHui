@@ -114,10 +114,14 @@ page{
   display: none;
 }
 .showAll{
+  height: 80rpx;
   text-align: center;
   color: orangered;
 }
 /* 图 */
+.intro-images{
+  margin-top: 16rpx;
+}
 .weui-uploader__bd {
   margin-bottom: -8rpx;
   margin-right: -18rpx;
@@ -131,3 +135,106 @@ page{
   height: 156rpx;
 }
 /* 证明 */
+.proof-container{
+  border-radius: 6rpx;
+  background: #f4f6f6;
+}
+.item .weui-cell{
+  position: relative;
+}
+.item .weui-cell::after{
+  content: '';
+  display: block;
+  position: absolute;
+  width: 90%;
+  height: 1rpx;
+  background: #e0e0e0;
+  left: 5%;
+  bottom: 0;
+}
+.item .item-inner{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 30rpx;
+  position: relative;
+}
+.item .item-inner::after{
+  content: '';
+  display: block;
+  position: absolute;
+  width: 90%;
+  height: 1rpx;
+  background: #e0e0e0;
+  left: 5%;
+  bottom: 0;
+}
+.item .weui-cell__ft{
+  font-size: 30rpx;
+}
+.item .weui-cell__ft image{
+  display: inline-block;
+  width: 32rpx;
+  height: 32rpx;
+  position: relative;
+  top: 6rpx;
+}
+image.fade{
+  animation: rotate .5s forwards;
+}
+@keyframes rotate{
+  0%{transform: rotate(0)}
+  100%{
+    transform: rotate(180deg);
+  }
+}
+.item-inner .list{
+  width: 100%;
+  color: #888;
+}
+.item-inner .list + .list{
+  margin-top: 20rpx;
+}
+.list .list-inner{
+  margin-top: 10rpx;
+}
+.list-inner .check{
+  display: inline;
+  font-size: 28rpx;
+  color: #46AE47;
+}
+.list-inner .check icon{
+  margin-right: 10rpx;
+}
+.list-inner .check + .check{
+  margin-left: 30rpx;
+}
+.item-inner .list-flex{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.item-inner .list-flex + .list-flex{
+  margin-top: 20rpx;
+}
+.list-flex image{
+  width: 70rpx;
+  height: 70rpx;
+  margin-right: 36rpx;
+}
+.list-flex .right{
+  color: #999;
+}
+.list-flex .right .state{
+  font-size: 30rpx;
+  color: #46AE47;
+}
+.item-inner .promise,
+.tip{
+  color: #999;
+  font-size: 30rpx;
+}
+.tip{
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+}

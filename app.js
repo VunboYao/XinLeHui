@@ -7,7 +7,7 @@ const api = new HTTP();
 App({
   onLaunch: function () {
     wx.login({
-     /*  success: res => {
+       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         api.request({
           url: `${host}/user/login?`,
@@ -19,7 +19,7 @@ App({
         }).catch(err => {
           console.log(err);
         })
-      } */
+      } 
     })
     wx.getSetting({
       success: res => {

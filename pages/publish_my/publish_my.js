@@ -20,12 +20,35 @@ Page({
     'https://img2.woyaogexing.com/2017/07/21/ed94bfdaa26b90b2!300x300_big.jpg',
     'https://img2.woyaogexing.com/2017/07/21/750229cd721d5253!400x400_big.jpg',
     'https://img2.woyaogexing.com/2017/07/21/027087e83ecdf903!400x400_big.jpg'
+    ],
+    proofList: [
+      {
+        id:0,
+        show: false
+      }, {
+        id: 1,
+        show: false
+      }, {
+        id: 2,
+        show: false
+      }
     ]
   },
   // 展开全部
   onShowAll() {
     this.setData({
       showAll: true
+    })
+  },
+  // 资料展示
+  onShowItem(e) {
+    const _this = this
+    const id = e.currentTarget.dataset.id
+    let proofList = _this.data.proofList
+    let show = proofList[id].show
+    proofList[id].show =!show
+    this.setData({
+      proofList: proofList
     })
   },
   previewImage: function (e) {
