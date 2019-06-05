@@ -84,7 +84,7 @@ page{
 }
 
 .section{}
-.section .title{
+.section > .title{
   line-height: 80rpx;
   font-size: 38rpx;
   font-weight: bold;
@@ -95,8 +95,39 @@ page{
   display: block;
   height: 200rpx;
   overflow: hidden;
+  position: relative;
+}
+.intro-text::after{
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 40rpx;
+  background: linear-gradient(rgba(255,255,255,.6), #fff);
+}
+.show_all{
+  height: auto;
+}
+.show_all::after{
+  display: none;
 }
 .showAll{
   text-align: center;
   color: orangered;
 }
+/* 图 */
+.weui-uploader__bd {
+  margin-bottom: -8rpx;
+  margin-right: -18rpx;
+}
+.weui-uploader__file {
+  margin-right: 18rpx;
+  margin-bottom: 18rpx;
+}
+.weui-uploader__input-box, .weui-uploader__img {
+  width: 156rpx;
+  height: 156rpx;
+}
+/* 证明 */

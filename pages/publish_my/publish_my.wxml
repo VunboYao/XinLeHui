@@ -27,14 +27,30 @@
   <view class='detail section'>
     <view class='title'>项目详情</view>
     <view class='intro'>
-      <text class='intro-text'>{{intro}}</text>
-      <view class='showAll'>
+      <text class="intro-text {{showAll ? 'show_all' : ''}}">{{intro}}</text>
+      <view class='showAll' wx:if='{{!showAll}}' catchtap='onShowAll'>
         <view class='txt'>展开全部</view>
         <view class='i'>︾</view>
+      </view>
+    </view>
+    <view class='intro-images'>
+      <view class="weui-uploader">
+        <view class="weui-uploader__bd">
+          <view class="weui-uploader__files" id="uploaderFiles">
+            <block wx:for="{{intro_images}}" wx:key="*this">
+              <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+                <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+              </view>
+            </block>
+          </view>
+        </view>
       </view>
     </view>
   </view>
   <view class='proof section'>
     <view class='title'>资料证明</view>
+    <view class='proof-container'>
+      
+    </view>
   </view>
 </view>
