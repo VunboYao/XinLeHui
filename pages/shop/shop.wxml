@@ -6,11 +6,11 @@
   <view class="weui-panel shopIntro">
     <view class="weui-panel__bd weui-media-box weui-media-box_appmsg">
       <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-        <image class="weui-media-box__thumb" src="{{shop.imgUrl}}" />
+        <image class="weui-media-box__thumb" src="{{shopInfo.shop_images}}" />
       </view>
       <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-        <view class="weui-media-box__title">{{shop.shopName}}</view>
-        <view class="weui-media-box__desc">{{shop.shopIntro}}</view>
+        <view class="weui-media-box__title">{{shopInfo.shop_name}}</view>
+        <view class="weui-media-box__desc">{{shopInfo.shop_decription}}</view>
       </view>
     </view>
   </view>
@@ -19,12 +19,12 @@
       <text>宝贝</text>
     </view>
     <view class='goods-list'>
-      <block wx:for='{{goodsList}}' wx:key="index">
-        <navigator url='./../goods/goods' class='goods'>
-          <image src='{{item.goodsImg}}'></image>
+      <block wx:for='{{goodsList}}' wx:key="goods_id">
+        <navigator url='./../goods/goods?goodsid={{item.goods_id}}' class='goods'>
+          <image src='{{item.goods_image}}'></image>
           <view class='inner'>
-            <view class='goods-name'>{{item.goodsName}}</view>
-            <view class='goods-price'>{{item.goodsPrice}}</view>
+            <view class='goods-name'>{{item.goods_name}}</view>
+            <view class='goods-price'>{{item.goods_price}}</view>
           </view>
         </navigator>
       </block>

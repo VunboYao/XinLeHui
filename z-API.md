@@ -92,7 +92,7 @@
 
 ## 店铺
 
-- 店铺详情：`/shop/ShopDeatils`
+- 店铺详情：`/shop/ShopDeatils?`
 
   ```javascript
   {
@@ -100,7 +100,7 @@
   }
   ```
 
-- 店铺商品列表: `/shop/GoodsListData`
+- 店铺商品列表: `/shop/GoodsListData?`
 
   ```javascript
   {
@@ -113,3 +113,6 @@
 
   ![img](file:///C:\Users\YYB\Documents\Tencent Files\1136025472\Image\C2C\I@RSCOATSZFB7E`WT}N105K.png)
 
+## ??
+
+- 轮播待判断， 新闻-商品-店铺

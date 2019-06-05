@@ -2,9 +2,9 @@
 <view class="content">
   <view class="carousel">
     <swiper indicator-dots circular >
-      <swiper-item class="swiper-item" wx:for="{{imgList}}" wx:key="{{index}}">
+      <swiper-item class="swiper-item" wx:for="{{goodsInfo.goods_image}}" wx:key="test">
         <view class="image-wrapper">
-          <image src="{{item.src}}" class="loaded" mode="aspectFill"></image>
+          <image src="{{item}}" class="loaded" mode="aspectFill"></image>
         </view>
       </swiper-item>
     </swiper>
@@ -18,9 +18,9 @@
       <text class="m-price">(公益金5元)</text>
     </view>
     <view class="bot-row">
-      <text>销量: 108</text>
-      <text>库存: 4690</text>
-      <text>浏览量: 768</text>
+      <text>销量: {{goodsInfo.goods_salenum}}</text>
+      <text>库存: {{goodsInfo.goods_storage}}</text>
+      <text>浏览量: {{goodsInfo.goods_views}}</text>
     </view>
   </view>
 
@@ -29,24 +29,21 @@
     <view class="c-row b-b">
       <text class="tit">购买类型</text>
       <view class="con">
-        <text class="selected-text" wx:for='{{specSelected}}' wx:key="{{index}}">{{item}}</text>
+        <!-- <text class="selected-text" wx:for='{{specSelected}}' wx:key="{{index}}">{{item}}</text> -->
+        <text class="selected-text">{{goodsInfo.goods_SKU}}</text>
       </view>
       <text class="yticon icon-you"></text>
     </view>
     <view class="c-row b-b">
       <text class="tit">促销活动</text>
       <view class="con-list">
-        <text>新人首单送20元无门槛代金券</text>
-        <text>订单满50减10</text>
-        <text>订单满100减30</text>
-        <text>单笔购买满两件免邮费</text>
+        <text>{{goodsInfo.goods_sale}}</text>
       </view>
     </view>
     <view class="c-row b-b">
       <text class="tit">服务</text>
       <view class="bz-list con">
-        <text>7天无理由退换货 ·</text>
-        <text>假一赔十 ·</text>
+        <text>{{goodsInfo.goods_service}}</text>
       </view>
     </view>
   </view>
