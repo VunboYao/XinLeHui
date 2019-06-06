@@ -7,18 +7,18 @@
       wx:for-index="goodsId"
       wx:key="goods.goods_id">
 
-      <!-- 图片 -->
+      <!-- 选择商品 -->
       <view class="image-wrapper">
         <image
           class="goods-avatar"
-          bind:tap="onSelected"
+          bind:tap="{{goods.goods_storage > 0 ? 'onSelected' : ''}}"
           data-id="{{goods.goods_id}}"
           src="{{goods.goods_image}}"></image>
         <icon
           class="goods-select"
           type="success"
           size="20"
-          bind:tap="onSelected"
+          bind:tap="{{goods.goods_storage > 0 ? 'onSelected' : ''}}"
           data-id="{{goods.goods_id}}"
           color="{{goods.check ? selectedColor: color}}"></icon>
       </view>
@@ -28,7 +28,7 @@
         <text class="goods-title-h1">{{goods.goods_name}}</text>
         <text class="goods-title-h2">{{goods.attr_val}}</text>
         <text class="goods-price">¥ {{goods.goods_price}}</text>
-
+        <text wx:if="{{goods.goods_storage == 0}}" class="goods-storage-tip">库存不足</text>
         <!-- 加减数量 -->
         <view class="goods-increment">
           <text
@@ -42,6 +42,7 @@
             data-id="{{goods.goods_id}}"
             data-stock="{{goods.goods_storage}}"
             bind:blur="onBlur"
+            disabled="{{goods.goods_storage == 0 ? true : false}}"
             value="{{goods.goods_num}}"></input>
           <text
             bind:tap="onAdd"
