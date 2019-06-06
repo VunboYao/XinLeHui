@@ -173,7 +173,9 @@ Page({
   onSelectAll() {
     this.data.toggleAll = !this.data.toggleAll
     this.data.carList.forEach(element => {
-      element.check = this.data.toggleAll
+      if (element.goods_storage > 0) {
+        element.check = this.data.toggleAll
+      }
     });
 
     /* 计算金额/数量 */
@@ -251,7 +253,7 @@ Page({
     });
     // 更新修改后的数据
     api.updateShopCart(tempArr, userKey).then(res => {
-      console.log("更新购物车数据",res);
+      console.log("更新购物车数据", res);
     })
     wx.hideLoading();
   },
