@@ -19,26 +19,24 @@ Page({
     toggleAll: false,
     totalMoney: 0,
     totalAmount: 0,
+    tempModifyArr: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const userKey = wx.getStorageSync('loginFlag');
-    // 获取购物车数据
-    api.getShopList(userKey).then(res => {
-      // 更新数据
-      if (res.code === 1) {
-        this.setData({
-          carList: res.datas.cart_list[0].goods
-        })
-      } else {
-        wx.showToast({
-          title: '网络错误',
-          icon: 'none'
-        })
-      }
+    // this._updateCartData()
+  },
+
+  onShow: function () {
+    this._updateCartData();
+
+    // 初始化
+    this.setData({
+      toggleAll: false,
+      totalMoney: 0,
+      totalAmount: 0,
     })
   },
 
@@ -145,7 +143,8 @@ Page({
     api.deleteShopData(deleteGoods[0].cart_id, userKey).then(res => {
       wx.showToast({
         title: '删除成功',
-        icon: 'success'
+        icon: 'success',
+        duration: 1000
       })
     })
 
@@ -240,9 +239,49 @@ Page({
     })
   },
 
-  /* 修改购物车数量 */
-
+  /* 退出界面，更新购物车数据 */
   onHide() {
+    /* 获取购物车id, 商品数量 */
+    let tempArr = []
+    this.data.carList.forEach(item => {
+      tempArr.push({
+        cart_id: item.cart_id,
+        quantity: item.goods_num,
+      })
+    });
+    // 更新修改后的数据
+    api.updateShopCart(tempArr, userKey).then(res => {
+      console.log("更新购物车数据",res);
+    })
     wx.hideLoading();
+  },
+
+  /* 更新数据 */
+  _updateCartData() {
+    // 获取购物车数据
+    api.getShopList(userKey).then(res => {
+      /* 购物车为空则不更新数据 */
+      if (res.datas.cart_list.length <= 0) {
+        return false;
+      }
+      // 遍历购物车店铺,取出商品
+      const tempArr = []
+      res.datas.cart_list.forEach(element => {
+        tempArr.push(...element.goods_list);
+      });
+
+      // 更新数据
+      if (res.code === 1) {
+        this.setData({
+          carList: tempArr
+        })
+      } else {
+        wx.showToast({
+          title: '网络错误',
+          icon: 'none',
+          duration: 1000
+        })
+      }
+    })
   }
 })

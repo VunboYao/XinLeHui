@@ -5,20 +5,24 @@ import {
   host
 } from './../config'
 
-class createPayOrder extends HTTP{
+class CreatePayOrder extends HTTP{
   constructor() {
     super()
   }
 
   // 提交订单
-  submitOrder(data, userId) {
+  submitOrder(cartData, userId) {
     return super.request({
-      data: data,
-      sessionid: userId
+      url: `${host}/shop/PayOrder`,
+      method: 'POST',
+      data: {
+        data: cartData,
+        sessionid: userId
+      }
     })
   }
 }
 
 export {
-  createPayOrder
+  CreatePayOrder
 }

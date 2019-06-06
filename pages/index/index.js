@@ -11,13 +11,9 @@ Page({
     indicatorDots: true,
     autoplay: true,
     interval: 3000,
-    duration: 1000,
+    duration: 300,
     swiperList: [],
-    news: [
-      '平安夜，百人祝福领取苹果~',
-      '寒流来袭，你的秋裤准备好了吗？',
-      '快收下，新鲜出炉冬季实用穿搭指南~'
-    ],
+    news: [],
     shopList: []
   },
   onLoad: function () {
