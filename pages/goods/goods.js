@@ -139,5 +139,20 @@ Page({
         }
       })
     }
+  },
+
+  /* 立即购买 */
+  onNowBuy() {
+    const orderList = [{
+      goods_id: this.data.goodsInfo.goods_id,
+      goods_name: this.data.goodsInfo.goods_name,
+      goods_image: this.data.goodsInfo.goods_image[0],
+      goods_num: 1,
+      goods_price: this.data.goodsInfo.goods_price,
+    }]
+    wx.setStorageSync("orderList", orderList);
+    wx.navigateTo({
+      url: '/pages/settlement/settlement?totalMoney=' + this.data.goodsInfo.goods_price
+    })
   }
 })

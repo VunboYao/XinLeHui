@@ -70,7 +70,7 @@
       <text>购物车</text>
     </navigator>
     <view class="action-btn-group">
-      <button type="primary" class=" action-btn no-border buy-now-btn">立即购买</button>
+      <button type="primary" bind:tap="onNowBuy" class=" action-btn no-border buy-now-btn">立即购买</button>
       <button type="primary" bind:tap="onAddCart" class=" action-btn no-border add-cart-btn">加入购物车</button>
     </view>
   </view>

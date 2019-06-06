@@ -26,7 +26,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // this._updateCartData()
+    this._updateCartData()
   },
 
   onShow: function () {
@@ -171,7 +171,16 @@ Page({
 
   /* onSelectAll */
   onSelectAll() {
+
+    // 必须有库存非0的物品时， 才可以全部选中
+    let index = this.data.carList.findIndex(item => {
+      return item.goods_storage > 0
+    })
+    if (index >= 0) {
     this.data.toggleAll = !this.data.toggleAll
+    }
+
+
     this.data.carList.forEach(element => {
       if (element.goods_storage > 0) {
         element.check = this.data.toggleAll
@@ -263,7 +272,7 @@ Page({
     // 获取购物车数据
     api.getShopList(userKey).then(res => {
       /* 购物车为空则不更新数据 */
-      if (res.datas.cart_list.length <= 0) {
+      if (!res.datas.cart_list) {
         return false;
       }
       // 遍历购物车店铺,取出商品

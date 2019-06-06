@@ -175,6 +175,17 @@ http://gy.ginmery.com/api/shop/OrderList?state = &sessionid =
   }
   ```
 
+### 取消订单
+
+- `/shop/CancelPay` **POST**
+
+  ```javascript
+  {
+      TotalOrderId: ?,
+      sessionid: ?
+  }
+  ```
+
   
 
 ## ??
