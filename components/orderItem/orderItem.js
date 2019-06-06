@@ -23,6 +23,15 @@ Component({
       this.triggerEvent('confirm', {
         orderId: orderId
       })
-    }
+    },
+    // 取消订单
+    cancelOrder(e) {
+      const orderId = e.currentTarget.dataset.orderid
+      console.log(orderId)
+      this.triggerEvent('cancelOrder', {
+        orderId: orderId
+      })
+    },
+    
   }
 })

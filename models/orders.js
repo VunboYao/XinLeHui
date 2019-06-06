@@ -15,6 +15,15 @@ class OrderModel extends HTTP{
       }
     })
   }
+  getCancelOrder(id, userKey){
+    return this.request({
+      url: `${host}/shop/CancelPay`,
+      data: {
+        TotalOrderId: id,
+        sessionid: userKey
+      }
+    })
+  }
 }
 
 export { OrderModel}
