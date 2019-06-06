@@ -1,10 +1,15 @@
 App({
   onLaunch: function () {
+<<<<<<< HEAD
+    wx.login({
+       success: res => {
+=======
     // 验证登录态
     this.checkLoginStatus();
    /*  wx.login({
       success: res => {
         console.log(res);
+>>>>>>> dfcdec947ca746d5e266d2f4ed96bd7448df5a6a
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         api.request({
           url: `${host}/user/login?`,
@@ -16,9 +21,15 @@ App({
         }).catch(err => {
           console.log(err);
         })
+<<<<<<< HEAD
+      } 
+    })
+    wx.getSetting({
+=======
       }
     }) */
    /*  wx.getSetting({
+>>>>>>> dfcdec947ca746d5e266d2f4ed96bd7448df5a6a
       success: res => {
         if (res.authSetting['scope.userInfo']) {
           wx.getUserInfo({

@@ -12,7 +12,50 @@ Page({
     　　科技发达了，军事，外交也不甘落后。边境线上，军警林立，几步一哨。海防线上，航母，驱逐舰，远洋舰，战列舰严阵以待。使那些帝国主义国家“不敢越雷池一步”。
     　　中国官员在外交方面从容不迫，镇定自若，使那些外国官员相形见拙，在世界外交史上占了一席之地。
     　　虽然中国在经济方面现在还是一个发展中国家，但我相信在不久的将来，中国一定会成为一个经济强国，成为让帝国主义国家闻风丧胆的世界强国。
-    　　在这改革开放40年里，中国参加了世界贸易组织，香港，澳门也重新回到了祖国母亲的怀抱里。东方雄狮的吼声响彻世界的每一个角落，中国人再也不会被被人称为东亚病夫，中国人站起来了！我相信，中国会越来越繁荣昌盛！`
+    　　在这改革开放40年里，中国参加了世界贸易组织，香港，澳门也重新回到了祖国母亲的怀抱里。东方雄狮的吼声响彻世界的每一个角落，中国人再也不会被被人称为东亚病夫，中国人站起来了！我相信，中国会越来越繁荣昌盛！`,
+    showAll: false,
+    intro_images:['https://img2.woyaogexing.com/2017/07/21/492e6146a4702923!400x400_big.jpg',
+    'https://img2.woyaogexing.com/2017/07/21/31133d475a3b6243!400x400_big.jpg',
+    'https://img2.woyaogexing.com/2017/07/21/ec970d998375fa0b!400x400_big.jpg',
+    'https://img2.woyaogexing.com/2017/07/21/ed94bfdaa26b90b2!300x300_big.jpg',
+    'https://img2.woyaogexing.com/2017/07/21/750229cd721d5253!400x400_big.jpg',
+    'https://img2.woyaogexing.com/2017/07/21/027087e83ecdf903!400x400_big.jpg'
+    ],
+    proofList: [
+      {
+        id:0,
+        show: false
+      }, {
+        id: 1,
+        show: false
+      }, {
+        id: 2,
+        show: false
+      }
+    ]
+  },
+  // 展开全部
+  onShowAll() {
+    this.setData({
+      showAll: true
+    })
+  },
+  // 资料展示
+  onShowItem(e) {
+    const _this = this
+    const id = e.currentTarget.dataset.id
+    let proofList = _this.data.proofList
+    let show = proofList[id].show
+    proofList[id].show =!show
+    this.setData({
+      proofList: proofList
+    })
+  },
+  previewImage: function (e) {
+    wx.previewImage({
+      current: e.currentTarget.id, // 当前显示图片的http链接
+      urls: this.data.intro_images // 需要预览的图片http链接列表
+    })
   },
 
   /**

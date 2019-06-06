@@ -27,14 +27,112 @@
   <view class='detail section'>
     <view class='title'>项目详情</view>
     <view class='intro'>
-      <text class='intro-text'>{{intro}}</text>
-      <view class='showAll'>
+      <text class="intro-text {{showAll ? 'show_all' : ''}}">{{intro}}</text>
+      <view class='showAll' wx:if='{{!showAll}}' catchtap='onShowAll'>
         <view class='txt'>展开全部</view>
         <view class='i'>︾</view>
+      </view>
+    </view>
+    <view class='intro-images'>
+      <view class="weui-uploader">
+        <view class="weui-uploader__bd">
+          <view class="weui-uploader__files" id="uploaderFiles">
+            <block wx:for="{{intro_images}}" wx:key="*this">
+              <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+                <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+              </view>
+            </block>
+          </view>
+        </view>
       </view>
     </view>
   </view>
   <view class='proof section'>
     <view class='title'>资料证明</view>
+    <view class='proof-container'>
+      <view class='item'>
+        <view class="weui-cell" data-id='0' bindtap='onShowItem'>
+          <view class="weui-cell__bd">资料证明</view>
+          <view class="weui-cell__ft">患者证明/诊断证明/收款人证明<image src='/static/images/arrow.png' class="{{proofList[0].show? 'fade' : ''}}"></image></view>
+        </view>
+        <view class='item-inner' hidden='{{!proofList[0].show}}'>
+          <view class='list'>
+            <view class='list-item'>患者：陈美芝</view>
+            <view class='list-inner'>
+              <view class='check'>
+                <icon type='success' size='12'></icon>身份证明已审核</view>
+            </view>
+          </view>
+          <view class='list'>
+            <view class='list-item'>所患疾病：头疼脑热</view>
+            <view class='list-inner'>
+              <view class='check'>
+                <icon type='success' size='12'></icon>诊断证明已审核</view>
+              <view class='check'>
+                <icon type='success' size='12'></icon>诊断医院：华中科技大学同济医学院</view>
+            </view>
+          </view>
+          <view class='list'>
+            <view class='list-item'>收款人：陈美芝</view>
+            <view class='list-inner'>
+              <view class='check'>
+                <icon type='success' size='12'></icon>身份证明已审核</view>
+              <view class='check'>
+                <icon type='success' size='12'></icon>关系证明已审核</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='item'>
+        <view class="weui-cell">
+          <view class="weui-cell__bd">增信补充说明</view>
+          <view class="weui-cell__ft" data-id='1' bindtap='onShowItem'>经济/房产/车辆/保险<image src='/static/images/arrow.png' class="{{proofList[1].show? 'fade' : ''}}"></image></view>
+        </view>
+        <view class='item-inner' hidden='{{!proofList[1].show}}'>
+          <view class='list-flex'>
+            <image src='/static/02.png'></image>
+            <view class='right'>
+              <view class='list-title'>家庭经济收入状况</view>
+              <view class='state'>年收入：2万/金融资产：5万</view>
+            </view>
+          </view>
+          <view class='list-flex'>
+            <image src='/static/02.png'></image>
+            <view class='right'>
+              <view class='list-title'>家庭房屋财产状况</view>
+              <view class='state'>数量：1/价值：5万/状态/未变卖</view>
+            </view>
+          </view>
+          <view class='list-flex'>
+            <image src='/static/02.png'></image>
+            <view class='right'>
+              <view class='list-title'>家庭车辆财产状况</view>
+              <view class='state'>无</view>
+            </view>
+          </view>
+          <view class='list-flex'>
+            <image src='/static/02.png'></image>
+            <view class='right'>
+              <view class='list-title'>保险状况</view>
+              <view class='state'>享受低保</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='item'>
+        <view class="weui-cell" data-id='2' bindtap='onShowItem'>
+          <view class="weui-cell__bd">发起人承诺书</view>
+          <view class="weui-cell__ft">详情<image src='/static/images/arrow.png' class="{{proofList[2].show? 'fade' : ''}}">︾</image></view>
+        </view>
+        <view class='item-inner' hidden='{{!proofList[2].show}}'>
+          <view class='promise'>
+            项目发起人已承诺，涉及本项目的文字、图片、证明等相关信息完全真实、有效，且不存在未经他人授权冒用他人名义进行求助的行为，本人收到的全部救助款项将直接用于被救助人的救助，不另行挪作他用。若发起人存在违反上述承诺的行为，愿自行承担全部法律责任
+          </view>
+        </view>
+      </view>
+      <view class='tip'>
+        该项目信息不属于慈善公开募捐信息，真实性由信息发布个人负责，【心乐会】提示您了解项目后再帮助Ta
+      </view>
+    </view>
   </view>
 </view>
