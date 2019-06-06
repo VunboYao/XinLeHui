@@ -1,10 +1,16 @@
 // pages/publish/publish.js
+import{
+  PublishModel
+} from './../../models/publish.js'
+const api = new PublishModel()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    userId: '',
     textarea: '如实填写需要帮助人的信息，住再哪里，哪里人，患了什么病，家庭遇到的困难，已经花了多少钱，还需要多少等（不少于100个汉字）',
     imagesFiles: [],
     videoFiles: [],
@@ -58,10 +64,11 @@ Page({
   },
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
-    const name = e.detail.value.name
-    const money = e.detail.value.money
-    const title = e.detail.value.title
-    const intro = e.detail.value.intro
+    const formData = e.detail.value
+    const name = formData.name
+    const price = formData.price
+    const title = formData.title
+    const remark = formData.remark
     if (!name) {
       wx.showToast({
         title: '请填写需要帮助人的姓名',
@@ -69,7 +76,7 @@ Page({
       })
       return
     }
-    if (!money) {
+    if (!price) {
       wx.showToast({
         title: '请填写希望筹到金额',
         icon: 'none'
@@ -83,21 +90,51 @@ Page({
       })
       return
     }
-    if (!intro) {
+    if (!remark) {
       wx.showToast({
         title: '请填写详细信息',
         icon: 'none'
       })
       return
     }
+    if (this.data.imagesFiles.length == 0) {
+      wx.showToast({
+        title: '请添加图片',
+        icon: 'none'
+      })
+      return
+    }
+    const upload = {
+      formdata: formData, // name,money,title,decs
+      imagesFiles: this.data.imagesFiles, // 图片地址
+      videoFiles: this.data.videoFiles  // 视频地址
+    }
+    console.log(upload)
     // 上传
+    // const post = api.postPublish(upload, this.data.userId)
+    // post.then(res => {
+    //   console.log(res)
+    // })
+    wx.uploadFile({
+      url: 'https://gy.ginmery.com/api/User/UpdateFile',
+      filePath: this.data.imagesFiles[0],
+      name: 'upload',
+      formData: {
+        'sessionid': this.data.userId,
+        'formData': formData
+      },
+      success(res) {
+        console.log(res)
+      }
+    })
   },
   
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const userKey = wx.getStorageSync('loginFlag');
+    this.data.userId = userKey
   },
 
   /**
