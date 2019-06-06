@@ -1,5 +1,9 @@
 import order from '../../json.js'
-// pages/test/test.js
+import {
+  OrderModel
+} from './../../models/orders.js'
+const api = new OrderModel()
+
 Page({
 
   /**
@@ -93,6 +97,17 @@ Page({
       orderList: order.orderList
     })
     wx.setStorageSync('orderData', order.orderList)
+
+    const userKey = wx.getStorageSync('loginFlag');
+    const state = ''
+    // 请求
+    const orderlist = api.getOrderList(state, userKey)
+    orderlist.then(res => {
+      console.log(res)
+      this.setData({
+        orderList: res.datas.order_list
+      })
+    })
   },
 
 })

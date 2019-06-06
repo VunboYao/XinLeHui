@@ -1,14 +1,20 @@
 import {
   HTTP
-} from './../..//utils/http.js'
+} from './../utils/http'
 import {
   host
 } from './../config'
 
 class OrderModel extends HTTP{
-  getOrderList () {
+  getOrderList(state, userKey) {
     return this.request({
-      url: `${host}/shop/OrderList`
+      url: `${host}/shop/OrderList`,
+      data: {
+        state: state,
+        sessionid: userKey
+      }
     })
   }
 }
+
+export { OrderModel}
