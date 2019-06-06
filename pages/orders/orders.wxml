@@ -10,13 +10,13 @@
   <!-- 全部 -->
   <block wx:if="{{index === 0}}">
     <block wx:for="{{orderList}}" wx:for-item="goods" wx:for-index="goodsId" wx:key="{{goodsId}}">
-      <order-item class="order-item" goods="{{goods}}"></order-item>
+      <order-item class="order-item" goods="{{goods}}" bind:cancelOrder='onCancelOrder'></order-item>
     </block>
   </block>
   <!-- 待付款 -->
   <block wx:if="{{index === 1}}">
     <block wx:for="{{noPay}}" wx:for-item="goods" wx:for-index="goodsId" wx:key="{{goodsId}}">
-      <order-item goods="{{goods}}"></order-item>
+      <order-item goods="{{goods}}"  bind:cancelOrder='onCancelOrder'></order-item>
     </block>
   </block>
   <!-- 待收货 -->

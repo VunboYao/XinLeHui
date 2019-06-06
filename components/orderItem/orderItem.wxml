@@ -1,41 +1,42 @@
 <view class="container">
   <view class="header">
     <text class="timestamp">{{goods.time}}</text>
-    <text class="current-status" wx:if="{{goods.state === 0}}">待付款</text>
-    <text class="current-status" wx:elif="{{goods.state === 1}}">待收货</text>
-    <text class="current-status close-status" wx:elif="{{goods.state === 4}}">交易关闭</text>
-    <text class="current-status" wx:else="{{goods.state === 9}}">交易成功</text>
+    <text class="current-status" wx:if="{{goods.order_state === 0}}">待付款</text>
+    <text class="current-status" wx:elif="{{goods.order_state === 1}}">待收货</text>
+    <text class="current-status close-status" wx:elif="{{goods.order_state === 4}}">交易关闭</text>
+    <text class="current-status close-status" wx:elif="{{goods.order_state === 5}}">订单已取消</text>
+    <text class="current-status" wx:else="{{goods.order_state === 9}}">交易成功</text>
   </view>
   <!-- 商品展示 -->
   <view class="main">
-    <view class="image-show" wx:if="{{goods.goodsList.length > 1}}">
+    <view class="image-show" wx:if="{{goods.goods_list.length > 1}}">
       <scroll-view class="scroll-x" scroll-x>
-        <image class="goods-img" wx:for="{{goods.goodsList}}" wx:for-item="img" src="{{img.image}}" wx:key="{{index}}">
+        <image class="goods-img" wx:for="{{goods.goods_list}}" wx:for-item="img" src="{{img.goods_image}}" wx:key="{{index}}">
         </image>
       </scroll-view>
     </view>
     <view class="detail-show" wx:else>
-      <image class="goods-avatar" src="{{goods.goodsList[0].image}}"></image>
+      <image class="goods-avatar" src="{{goods.goods_list[0].goods_image}}"></image>
       <view class="goods-detail-intro">
-        <text class="goods-detail-h1">{{goods.goodsList[0].title}}</text>
-        <text class="goods-detail-h2">{{goods.goodsList[0].attr}}</text>
-        <text class="goods-detail-price">¥{{goods.goodsList[0].price}}</text>
+        <text class="goods-detail-h1">{{goods.goods_list[0].title}}</text>
+        <text class="goods-detail-h2">{{goods.goods_list[0].attr}}</text>
+        <text class="goods-detail-price">¥{{goods.goods_list[0].goods_price}}</text>
       </view>
     </view>
     <!-- 支付费用提示 -->
     <view class="goods-pay-tip">
-      共 <text class="goods-pay_total-amount">{{goods.goodsList.length}}</text> 件商品 实付款 <text
-        class="goods-pay_total-money">¥ {{}}</text>
+      共 <text class="goods-pay_total-amount">{{goods.goods_list.length}}</text> 件商品 实付款 <text
+        class="goods-pay_total-money">¥ {{goods.pay_amount}}</text>
     </view>
   </view>
 
   <!-- 支付/取消 -->
-  <view class="footer" wx:if="{{goods.state === 0}}">
-    <text class="confirm-button cancel-pay">取消订单</text>
-    <text class="confirm-button confirm-pay">立即支付</text>
+  <view class="footer" wx:if="{{goods.order_state === 0}}">
+    <text class="confirm-button cancel-pay" data-orderid="{{goods.order_id}}" bind:tap='cancelOrder'>取消订单</text>
+    <text class="confirm-button confirm-pay" bind:tap='pay'>立即支付</text>
   </view>
 
-  <view class="footer" wx:elif="{{goods.state === 1}}">
-    <text bind:tap="confirmGoods" data-orderid="{{goods.orderId}}" class="confirm-button confirm-pay">确认收货</text>
+  <view class="footer" wx:elif="{{goods.order_state === 1}}">
+    <text bind:tap="confirmGoods" data-orderid="{{goods.order_id}}" class="confirm-button confirm-pay">确认收货</text>
   </view>
 </view>
