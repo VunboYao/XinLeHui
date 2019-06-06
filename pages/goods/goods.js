@@ -126,7 +126,6 @@ Page({
     const userKey = wx.getStorageSync('loginFlag');
     if (goodsId) {
       api.addGoodsCart(goodsId, userKey).then(res => {
-        console.log(res);
         if (res.code === 1) {
           wx.showToast({
             title: '加入成功',

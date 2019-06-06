@@ -7,7 +7,7 @@
   <swiper class='swiper' indicator-dots='{{indicatorDots}}' autoplay='{{autoplay}}' interval='{{interval}}' duration='{{duration}}' circular indicator-active-color='#FEC92E' indicator-color='#ffffff'>
     <block wx:for='{{swiperList}}' wx:key="index">
       <swiper-item>
-        <navigator url="/pages/goods/goods">
+        <navigator url="{{tool.swiperSelect(item.banner_link, item.banner_link_data)}}">
           <image src='{{item.banner_image_url}}' class='swiper-image'></image>
         </navigator>
       </swiper-item>
@@ -43,3 +43,19 @@
     </view>
   </view>
 </view>
+
+<wxs module="tool">
+  var select = function (linkData, linkId) {
+    if (linkData ==  'news') {
+      return '/pages/news/news?newsid=' + linkId;
+    } else if (linkData == 'goods') {
+      return '/pages/goods/goods?goodsid=' + linkId;
+    } else {
+      return '/pages/shop/shop?id=' + linkId;
+    }
+  }
+
+  module.exports = {
+    swiperSelect: select
+  }
+</wxs>

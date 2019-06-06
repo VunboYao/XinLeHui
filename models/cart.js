@@ -5,7 +5,7 @@ import {
   host
 } from './../config'
 
-class Cart extends HTTP{
+class Cart extends HTTP {
   constructor() {
     super()
   }
@@ -34,19 +34,25 @@ class Cart extends HTTP{
   }
 
   // 修改购物车商品数量
-  updateShopCart(id, count) {
+  updateShopCart(cartData, userId) {
     return super.request({
       url: `${host}/shop/updateShopCart`,
       method: 'POST',
       data: {
-        cart_id: id,        // 商品id
-        quantity: count     // 商品数量
+        cart_list: cartData,
+        /*
+          cartData: {
+            cart_id: ? , // 购物车id
+            quantity : ? // 数量
+          }
+        */
+        sessionid: userId
       }
     })
   }
 
   // 校验订单
-  checkOrder(data,userId) {
+  checkOrder(data, userId) {
     return super.request({
       url: `${host}/shop/CheckOrder`,
       data: data,

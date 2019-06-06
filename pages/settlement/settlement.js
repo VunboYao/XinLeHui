@@ -1,4 +1,10 @@
-// pages/settlement/settlement.js
+import {
+  CreatePayOrder
+} from "./../../models/settlement";
+
+const api = new CreatePayOrder();
+const userKey = wx.getStorageSync('loginFlag');
+
 Page({
 
   /**
@@ -48,10 +54,51 @@ Page({
 
   },
 
+  /* 生成订单 */
   onPay() {
     if (this.data.userAddress) {
-      wx.navigateTo({
-        url: '/pages/pay/pay'
+      // 商品id与数量
+      const tempDataArray = [];
+      this.data.orderList.forEach(element => {
+        tempDataArray.push({
+          "goodsid": element.goods_id,
+          "num": element.goods_num
+        })
+      });
+
+      /* 地址及商品数据 */
+      let orderData = {
+        "address": this.data.userAddress,
+        "array": tempDataArray,
+      }
+
+      // 提交订单
+      api.submitOrder(orderData, userKey).then(res => {
+
+        /* 库存判断 */
+        if (res.result == 0) {
+          wx.showToast({
+            "title": "库存不足",
+            "image": './../../images/notice.png',
+            "duration": 3000,
+            "mask": true
+          })
+          /* 返回购物车界面 */
+          setTimeout(() => {
+            wx.switchTab({
+              url: '/pages/cart/cart'
+            })
+          }, 3000);
+          return false;
+        }
+
+        /* 缓存返回订单数据 */
+        wx.setStorageSync('callbackOrderData', res.datas);
+
+        /* 跳转支付界面 */
+        wx.navigateTo({
+          url: '/pages/pay/pay'
+        })
       })
     }
   }

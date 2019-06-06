@@ -84,11 +84,16 @@
 
   ```javascript
   {
-      cart_id: ?, // 购物车id
-      quantity: ? // 数量
+      cart_list: [
+          {
+              cart_id: ?, // 购物车id
+      		quantity: ? // 数量
+        }
+      ]，
+      sessionid: ?
   }
   ```
-
+  
   
 
 ## 店铺
@@ -137,7 +142,7 @@
       
   ```
 
-- **校验订单**：`/shop/CheckOrder`  **POST**
+- ~~**校验订单**：`/shop/CheckOrder`  **POST**~~
 
   ```javascript
   {
@@ -153,10 +158,30 @@
 
   
 
+## 订单
+
+### 获取订单列表
+
+```javascript
+http://gy.ginmery.com/api/shop/OrderList?state = &sessionid =
+```
+
+- `/shop/OrderList`
+
+  ```javascript
+  {
+      state: ''，// 全部："", 待付款： 'ordertoPay', 待收货： ’ordertoReceive'
+      sessionid: ?
+  }
+  ```
+
   
 
 ## ??
 
 - 轮播待判断， 新闻-商品-店铺
 
-- 添加商品至购物车问题
+- ~~添加商品至购物车， 跳转不更新数据， onShow~~
+
+- 地址取消授权后无法再次发起
+- ~~修改购物车数量？？？？~~
