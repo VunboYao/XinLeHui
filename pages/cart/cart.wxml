@@ -33,14 +33,14 @@
         <view class="goods-increment">
           <text
             bind:tap="onDown"
-            data-id="{{goods.id}}"
-            data-number="{{goods.number}}"
+            data-id="{{goods.goods_id}}"
+            data-number="{{goods.goods_num}}"
             class="{{goods.goods_num == 1 ? 'goods-increment_icon_dis' : 'goods-increment_icon'}}">-</text>
           <input
             class="goods-number"
             type="number"
-            data-id="{{goods.id}}"
-            data-stock="{{goods.stock}}"
+            data-id="{{goods.goods_id}}"
+            data-stock="{{goods.goods_storage}}"
             bind:blur="onBlur"
             value="{{goods.goods_num}}"></input>
           <text

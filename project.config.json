@@ -10,8 +10,8 @@
 		"minified": true,
 		"newFeature": true,
 		"autoAudits": false,
-    "checkInvalidKey": true,
-    "checkSiteMap": false
+		"checkInvalidKey": true,
+		"checkSiteMap": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.7.0",

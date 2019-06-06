@@ -12,7 +12,7 @@ Page({
   },
 
 
-  onGetAddress() {
+ /*  onGetAddress() {
     // 获取用户地址,更新缓存
     wx.chooseAddress({
       success: (res) => {
@@ -23,7 +23,7 @@ Page({
         })
       }
     })
-  },
+  }, */
   /**
    * 生命周期函数--监听页面加载
    */

@@ -75,7 +75,7 @@
 
   ```javascript
   {
-      cart_id: ?， // 商品id
+      cart_id: ?， // 购物车id
       sessionid: ?
   }
   ```
@@ -84,7 +84,7 @@
 
   ```javascript
   {
-      cart_id: ?, // 商品id
+      cart_id: ?, // 购物车id
       quantity: ? // 数量
   }
   ```
@@ -158,3 +158,5 @@
 ## ??
 
 - 轮播待判断， 新闻-商品-店铺
+
+- 添加商品至购物车问题

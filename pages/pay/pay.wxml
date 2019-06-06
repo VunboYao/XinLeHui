@@ -14,19 +14,19 @@
   <!-- 收获地址 -->
   <view class="address">
     <view class="address-title">收获地址</view>
-    <view bind:tap="onGetAddress" class="address-detail">
+    <view class="address-detail">
       <view class="address-detail-intro">
-        <block wx:if="{{userAddress}}">
+        <!-- <block wx:if="{{userAddress}}"> -->
           <text>
             {{userAddress.telNumber}} {{userAddress.userName}} 收
           </text>
           <text>
             {{userAddress.provinceName}} {{userAddress.cityName}} {{userAddress.countyName}} {{userAddress.detailInfo}}
           </text>
-        </block>
-        <text wx:else class="address-detail-none">请选择收获地址</text>
+        <!-- </block> -->
+        <!-- <text wx:else class="address-detail-none">请选择收获地址</text> -->
       </view>
-      <image src="../../images/right.png" class="address-detail-more"></image>
+      <!-- <image src="../../images/right.png" class="address-detail-more"></image> -->
     </view>
   </view>
 

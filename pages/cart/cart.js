@@ -1,4 +1,6 @@
-import { Cart } from "./../../models/cart";
+import {
+  Cart
+} from "./../../models/cart";
 
 // 实例购物车类
 const api = new Cart()
@@ -16,7 +18,7 @@ Page({
     userAddress: {},
     toggleAll: false,
     totalMoney: 0,
-    totalAmount: 0
+    totalAmount: 0,
   },
 
   /**
@@ -75,7 +77,7 @@ Page({
     if (number > 1) {
       let goodsId = e.currentTarget.dataset.id
       let index = this._getGoodsIndex(goodsId)
-      this.data.carList[index].number = --number
+      this.data.carList[index].goods_num = --number
 
       /* 金额/总数 */
       this._getMoneyTotal()
@@ -97,7 +99,7 @@ Page({
     let index = this._getGoodsIndex(goodsId)
     number = number < 1 ? 1 : number
     number = number > stock ? stock : number
-    this.data.carList[index].number = number
+    this.data.carList[index].goods_num = number
 
     /* 金额/总数 */
     this._getMoneyTotal()
@@ -117,7 +119,7 @@ Page({
     if (number < stock) {
       let goodsId = e.currentTarget.dataset.id
       let index = this._getGoodsIndex(goodsId)
-      this.data.carList[index].number = ++number
+      this.data.carList[index].goods_num = ++number
 
       /* 金额/总数 */
       this._getMoneyTotal()
@@ -136,7 +138,17 @@ Page({
   onDelete(e) {
     let goodsId = e.currentTarget.dataset.id
     let index = this._getGoodsIndex(goodsId)
-    this.data.carList.splice(index, 1)
+    // 删除的数据
+    let deleteGoods = this.data.carList.splice(index, 1);
+
+    // 删除数据库
+    api.deleteShopData(deleteGoods[0].cart_id, userKey).then(res => {
+      wx.showToast({
+        title: '删除成功',
+        icon: 'success'
+      })
+    })
+
 
     /* 全部为 true 则全选 */
     let bCallback = this.data.carList.every(item => item.check === true)
@@ -184,18 +196,24 @@ Page({
         title: '请等待'
       })
 
-      // 选中数组
-      let selectArray = []
+      /*  // 选中数组
+       this.data.carList.forEach(item => {
+         if (item.check) {
+           tempArr.push({"goodsid": item,"num": item})
+         }
+       }) */
+
+      // 存入缓存
+      let tempArr = []
       this.data.carList.forEach(item => {
         if (item.check) {
-          tempArr.push({"goodsid": item,"num": item})
+          tempArr.push(item);
         }
       })
-      // 存入缓存
-      // wx.setStorageSync('orderList', tempArr)
-     /*  wx.navigateTo({
+      wx.setStorageSync('orderList', tempArr)
+      wx.navigateTo({
         url: '/pages/settlement/settlement?totalMoney=' + this.data.totalMoney
-      }) */
+      })
     }
   },
 
@@ -207,8 +225,8 @@ Page({
     let totalMoney = 0
     this.data.carList.forEach(item => {
       if (item.check) {
-        totalMoney += item.number * item.price
-        totalAmount += item.number
+        totalMoney += item.goods_num * item.goods_price
+        totalAmount += item.goods_num
       }
     })
     totalMoney = Number(totalMoney.toFixed(2))
@@ -221,6 +239,8 @@ Page({
       return item.goods_id == goodsId
     })
   },
+
+  /* 修改购物车数量 */
 
   onHide() {
     wx.hideLoading();

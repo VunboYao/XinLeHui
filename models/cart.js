@@ -22,12 +22,13 @@ class Cart extends HTTP{
   }
 
   // 删除购物车数据
-  deleteShopData(id) {
+  deleteShopData(cartId, userId) {
     return super.request({
       url: `${host}/shop/DeleteShopCart`,
       method: 'POST',
       data: {
-        cart_id: id // 商品id
+        cart_id: cartId, // 商品id
+        sessionid: userId,
       }
     })
   }

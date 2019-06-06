@@ -29,11 +29,11 @@ Page({
    */
   onLoad: function (options) {
     let totalMoney = options.totalMoney
-   /*  let orderList = wx.getStorageSync('orderList')
+    let orderList = wx.getStorageSync('orderList')
     let userAddress = wx.getStorageSync('userAddress')
- */
+
     /* 地址缓存是否存在 */
-   /*  if (userAddress) {
+    if (userAddress) {
       this.setData({
         orderList: orderList,
         totalMoney: totalMoney,
@@ -44,13 +44,15 @@ Page({
         orderList: orderList,
         totalMoney: totalMoney
       })
-    } */
+    }
 
   },
 
   onPay() {
-    wx.navigateTo({
-      url: '/pages/pay/pay'
-    })
+    if (this.data.userAddress) {
+      wx.navigateTo({
+        url: '/pages/pay/pay'
+      })
+    }
   }
 })
