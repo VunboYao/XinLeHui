@@ -30,22 +30,27 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "./static/images/home.png",
-        "selectedIconPath": "./static/images/home_on.png"
+        "iconPath": "/images/01.png",
+        "selectedIconPath": "/images/00.png"
       },
       {
         "pagePath": "pages/income/income",
-        "text": "公益"
+        "text": "公益",
+         "iconPath": "/images/20.png",
+         "selectedIconPath": "/images/21.png"
       },
       {
         "pagePath": "pages/cart/cart",
-        "text": "购物车"
+        "text": "购物车",
+         "iconPath": "/images/10.png",
+         "selectedIconPath": "/images/11.png"
+
       },
       {
         "pagePath": "pages/my/my",
         "text": "我的",
-        "iconPath": "./static/images/my.png",
-        "selectedIconPath": "./static/images/my_on.png"
+         "iconPath": "/images/40.png",
+         "selectedIconPath": "/images/41.png"
       }
     ]
   },

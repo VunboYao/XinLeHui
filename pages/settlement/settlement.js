@@ -74,11 +74,12 @@ Page({
 
       // 提交订单
       api.submitOrder(orderData, userKey).then(res => {
+        console.log(res);
 
         /* 库存判断 */
         if (res.result == 0) {
           wx.showToast({
-            "title": "库存不足",
+            "title": res.message,
             "image": './../../images/notice.png',
             "duration": 3000,
             "mask": true
