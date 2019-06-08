@@ -15,7 +15,8 @@
     "pages/publish_list/publish_list",
     "pages/pay/pay",
     "pages/news/news",
-    "pages/orderDetails/orderDetails"
+    "pages/orderDetails/orderDetails",
+    "pages/feedback/feedback"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -23,34 +24,35 @@
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
-    "color": "#ddd",
-    "selectedColor": "#234",
+    "color": "#666",
+    "borderStyle": "white",
+    "selectedColor": "#c9250E",
     "backgroundColor": "#fff",
     "list": [
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "/images/01.png",
+        "iconPath": "/images/0.png",
         "selectedIconPath": "/images/00.png"
       },
       {
         "pagePath": "pages/income/income",
         "text": "公益",
-         "iconPath": "/images/20.png",
-         "selectedIconPath": "/images/21.png"
+         "iconPath": "/images/1.png",
+         "selectedIconPath": "/images/11.png"
       },
       {
         "pagePath": "pages/cart/cart",
         "text": "购物车",
-         "iconPath": "/images/10.png",
-         "selectedIconPath": "/images/11.png"
+         "iconPath": "/images/2.png",
+         "selectedIconPath": "/images/22.png"
 
       },
       {
         "pagePath": "pages/my/my",
         "text": "我的",
-         "iconPath": "/images/40.png",
-         "selectedIconPath": "/images/41.png"
+         "iconPath": "/images/3.png",
+         "selectedIconPath": "/images/33.png"
       }
     ]
   },

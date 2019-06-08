@@ -85,6 +85,8 @@ Page({
     const myPublishData = api.getPublishDetails(userKey, this.data.publishId)
     myPublishData.then(res => {
       console.log(res)
+    }).catch(res => {
+      console.log(res);
     })
 
   },

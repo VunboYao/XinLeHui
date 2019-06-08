@@ -34,6 +34,19 @@ Page({
         })
       }
     } */
+    wx.login({
+      success(login) {
+        api.request({
+          url: `${host}/user/login?`,
+          data: {
+            code: login.code
+          }
+        }).then(res => {
+          wx.setStorageSync('loginFlag', res.sessionid);
+          console.log(res);
+        })
+      }
+    })
   },
 
   getUserInfo: function (e) {
@@ -66,7 +79,12 @@ Page({
     const that = this;
     wx.getUserInfo({
       success(response) {
-        wx.login({
+        app.globalData.userInfo = response.userInfo;
+        wx.setStorageSync('userInfo', response.userInfo);
+        wx.switchTab({
+          url: '/pages/index/index',
+        })
+       /*  wx.login({
           success(login) {
             // 发送 res.code 到后台换取 openId, sessionKey, unionId
             api.request({
@@ -90,7 +108,7 @@ Page({
           fail(err) {
             console.log(err);
           }
-        })
+        }) */
       },
       fail(err) {
         wx.showModal({

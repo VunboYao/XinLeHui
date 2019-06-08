@@ -1,0 +1,49 @@
+/* pages/feedback/feedback.wxss */
+.container {
+  background-color: #f5f5f5;
+  padding-top: 40rpx;
+}
+
+.x-form {
+  display: flex;
+  flex-direction: column;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+
+.title {
+  padding-left: 20rpx;
+  position: relative;
+}
+.title::before {
+  position: absolute;
+  content: '';
+  top: 10rpx;
+  left: 0;
+  width: 6rpx;
+  height: 28rpx;
+  background-color: #D5554C;
+}
+.x-form-content {
+  width: calc(100% - 60rpx);
+  margin-top: 40rpx;
+  padding: 20rpx;
+  background-color: #fff;
+  height: 400rpx;
+}
+
+
+.submit-data {
+  margin: 80rpx 0;
+  background-color: #D5554C;
+  color: #fff;
+}
+
+.footer-tip {
+  text-align: center;
+  color: #D5554C;
+  font-size: 30rpx;
+}
+.phone {
+  border-bottom: 1px solid #D5554C;
+}

@@ -41,12 +41,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
 					"name": "demo",
-					"pathName": "pages/news/news",
+					"pathName": "pages/feedback/feedback",
 					"query": "id='1'",
 					"scene": null
 				},
@@ -68,6 +68,7 @@
 					"id": -1,
 					"name": "订单",
 					"pathName": "pages/orders/orders",
+					"query": "",
 					"scene": null
 				}
 			]

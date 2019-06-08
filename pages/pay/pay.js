@@ -5,7 +5,6 @@ import {
 const api = new Pay();
 
 
-const userKey = wx.getStorageSync('loginFlag');
 
 // pages/settlement/settlement.js
 Page({
@@ -48,6 +47,7 @@ Page({
 
   /* 取消订单 */
   onCancel() {
+    const userKey = wx.getStorageSync('loginFlag');
     api.cancelOrder(this.data.orderId, userKey).then(res => {
       wx.showToast({
         title: '订单已取消',

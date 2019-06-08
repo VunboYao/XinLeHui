@@ -3,7 +3,6 @@ import {
 } from "./../../models/settlement";
 
 const api = new CreatePayOrder();
-const userKey = wx.getStorageSync('loginFlag');
 
 Page({
 
@@ -73,6 +72,7 @@ Page({
       }
 
       // 提交订单
+      const userKey = wx.getStorageSync('loginFlag');
       api.submitOrder(orderData, userKey).then(res => {
         console.log(res);
 

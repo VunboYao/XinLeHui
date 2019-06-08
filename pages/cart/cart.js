@@ -5,7 +5,6 @@ import {
 // 实例购物车类
 const api = new Cart()
 // 获取登录态
-const userKey = wx.getStorageSync('loginFlag');
 
 Page({
   /**
@@ -26,7 +25,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this._updateCartData()
+    // this._updateCartData()
+    wx.showLoading({
+      title: '加载中'
+    })
   },
 
   onShow: function () {
@@ -38,6 +40,7 @@ Page({
       totalMoney: 0,
       totalAmount: 0,
     })
+    wx.hideLoading()
   },
 
   /* 单个选中 */
@@ -94,7 +97,9 @@ Page({
     let number = parseInt(e.detail.value)
     let stock = e.currentTarget.dataset.stock
     let goodsId = e.currentTarget.dataset.id
-    let index = this._getGoodsIndex(goodsId)
+    let index = this._getGoodsIndex(goodsId);
+
+    // 商品最少为1, 不能超出最大库存
     number = number < 1 ? 1 : number
     number = number > stock ? stock : number
     this.data.carList[index].goods_num = number
@@ -140,6 +145,7 @@ Page({
     let deleteGoods = this.data.carList.splice(index, 1);
 
     // 删除数据库
+    const userKey = wx.getStorageSync("loginFlag");
     api.deleteShopData(deleteGoods[0].cart_id, userKey).then(res => {
       wx.showToast({
         title: '删除成功',
@@ -177,10 +183,10 @@ Page({
       return item.goods_storage > 0
     })
     if (index >= 0) {
-    this.data.toggleAll = !this.data.toggleAll
+      this.data.toggleAll = !this.data.toggleAll
     }
 
-
+    // 库存大于0则选中该物品
     this.data.carList.forEach(element => {
       if (element.goods_storage > 0) {
         element.check = this.data.toggleAll
@@ -261,8 +267,8 @@ Page({
       })
     });
     // 更新修改后的数据
+    const userKey = wx.getStorageSync('loginFlag');
     api.updateShopCart(tempArr, userKey).then(res => {
-      console.log("更新购物车数据", res);
     })
     wx.hideLoading();
   },
@@ -270,6 +276,7 @@ Page({
   /* 更新数据 */
   _updateCartData() {
     // 获取购物车数据
+    const userKey = wx.getStorageSync('loginFlag');
     api.getShopList(userKey).then(res => {
       /* 购物车为空则不更新数据 */
       if (!res.datas.cart_list) {

@@ -2,6 +2,8 @@ import {
   IndexData
 } from './../../models/index'
 
+const app = getApp()
+
 
 // 生成数据获取函数
 const api = new IndexData()
@@ -14,9 +16,23 @@ Page({
     duration: 300,
     swiperList: [],
     news: [],
-    shopList: []
+    shopList: [],
+    unAuth: false, // 未授权
   },
   onLoad: function () {
+
+    /* 查看本地是否有用户信息,没有则重新授权 */
+    const userInfo = wx.getStorageSync('userInfo');
+    if (!userInfo) {
+      this.setData({
+        unAuth: true
+      })
+    }
+
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
 
     // 1. 首页店铺
     const req1 = api.getShopList();
@@ -38,6 +54,27 @@ Page({
         swiperList: swiperList.datas.banner_list,
         news: news.datas.news_list,
       })
+      wx.hideLoading();
     })
   },
+  // 用户授权
+  onUserInfo(e) {
+    // 获取用户信息
+    const userInfo = e.detail.userInfo;
+    // 存入本地
+    wx.setStorageSync('userInfo', userInfo);
+    // 存入全局
+    app.globalData.userInfo = userInfo;
+
+    this.setData({
+      unAuth: false
+    })
+  },
+
+  // 取消
+  onCancel(e) {
+    this.setData({
+      unAuth: false
+    })
+  }
 })

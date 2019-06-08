@@ -1,0 +1,9 @@
+<view class="container">
+  <form class="x-form" bindsubmit="formSubmit">
+    <view class="title">反馈建议</view>
+    <textarea class="x-form-content" value='' maxlength="500" name="content"
+      placeholder="您的建议与反馈是我们前进的动力"></textarea>
+    <button class="submit-data" form-type="submit">提 交</button>
+  </form>
+  <view class="footer-tip">如需帮助可拨打 <text class="phone" bind:tap="onPhone">400-10086</text></view>
+</view>
