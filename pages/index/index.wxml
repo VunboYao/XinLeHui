@@ -75,3 +75,4 @@
     </view>
   </view>
 </view>
+<button  bind:tap="userPhone">Phone</button>

@@ -45,6 +45,8 @@ Page({
     })
     // 存入本地
     wx.setStorageSync('userInfo', userInfo);
+    // 存入用户详细信息
+    wx.setStorageSync('userInfoDetail', e.detail);
     // 存入全局
     app.globalData.userInfo = userInfo;
   },

@@ -63,13 +63,16 @@ Page({
     const userInfo = e.detail.userInfo;
     // 存入本地
     wx.setStorageSync('userInfo', userInfo);
+    // 存入用户详细信息
+    wx.setStorageSync('userInfoDetail', e.detail);
+
     // 存入全局
     app.globalData.userInfo = userInfo;
-
     this.setData({
       unAuth: false
     })
   },
+  // 显示时授权窗口判断
   onShow() {
     // 显示时，如果用户授权了。则隐藏授权窗口
     const userInfo = wx.getStorageSync('userInfo');
@@ -84,5 +87,23 @@ Page({
     this.setData({
       unAuth: false
     })
+  },
+  // test
+  userPhone(e) {
+    const SessionId = wx.getStorageSync('loginFlag');
+    const vi = wx.getStorageSync('userInfoDetail').iv;
+    wx.request({
+      url: 'https://gy.ginmery.com/api/User/GetMobile',
+      method: 'GET',
+      data: {
+        Mobile: '',
+        SessionId: SessionId,
+        IV: vi
+      },
+      success(res) {
+        console.log(res.data);
+      }
+    })
   }
+
 })
