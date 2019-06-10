@@ -22,12 +22,12 @@ class PublishModel extends HTTP {
       }
     })
   }
-  postPublish(upload, userKey) {
+  postPublish(formData, userKey) {
     return this.request({
       url: `${host}/User/PushHelp`,
       method: 'POST',
       data: {
-        upload: upload,
+        formData: formData,
         sessionid: userKey 
       } 
     })

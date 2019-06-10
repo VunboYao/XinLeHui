@@ -16,7 +16,7 @@
     </view>
     <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
   </view>
-  <view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}">
+  <view class="weui-cells searchbar-result" wx:if="{{searchData.length > 0}}">
     <navigator url="./../shop/shop?id={{01}}" class="weui-cell" hover-class="weui-cell_active">
       <view class="weui-cell__bd">
         <view class='shop'>
@@ -27,7 +27,6 @@
               <text class='shop-price'>¥25</text>|
               <text class='shop-num'>月售 567</text>
             </view>
-            <view class='shop-address'>青岛市市南区中山路01号</view>
           </view>
         </view>
       </view>
@@ -36,8 +35,8 @@
   <view class='hot'>
     <view class="weui-cells__title">热门搜索</view>
     <view class='keywords'>
-      <view class='words'>小程序</view>
-      <view class='words'>program</view>
+      <view class='words' data-link='shop' data-id='1' bindtap='onHotSearch'>小程序</view>
+      <view class='words' data-link='goods' data-id='5cf779e95360fb23d8f95ffb' bindtap='onHotSearch'>program</view>
     </view>
   </view>
 </view>

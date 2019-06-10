@@ -1,6 +1,14 @@
 <!--pages/publish/publish.wxml-->
 <view class='container'>
   <form catchsubmit='formSubmit' class='formContainer'>
+  <view class="weui-cells__title">您的手机号</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <input class="weui-input" name='mobile' value='{{phone}}' placeholder="手机号" />
+        </view>
+      </view>
+    </view>
     <view class="weui-cells__title">为谁发起</view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
@@ -43,7 +51,6 @@
           <view class="weui-uploader">
             <view class="weui-uploader__hd">
               <view class="weui-uploader__title">添加图片</view>
-              <!-- <view class="weui-uploader__info">{{files.length}}/2</view> -->
             </view>
             <view class="weui-uploader__bd">
               <view class="weui-uploader__files" id="imgFiles">
@@ -80,6 +87,30 @@
               </view>
               <view class="weui-uploader__input-box">
                 <view class="weui-uploader__input" bindtap="chooseVideo"></view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='weui-cells weui-cells_after-title'>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <view class="weui-uploader">
+            <view class="weui-uploader__hd">
+              <view class="weui-uploader__title">添加隐私图片</view>
+            </view>
+            <view class="weui-uploader__bd">
+              <view class="weui-uploader__files" id="imgFiles">
+                <block wx:for="{{privateImagesFiles}}" wx:key="*this">
+                  <view class="weui-uploader__file" bindtap="previewPrivateImage" id="{{item}}">
+                    <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                  </view>
+                </block>
+              </view>
+              <view class="weui-uploader__input-box">
+                <view class="weui-uploader__input" bindtap="choosePrivateImage"></view>
               </view>
             </view>
           </view>

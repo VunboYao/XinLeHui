@@ -30,6 +30,7 @@ Page({
   onLoad: function (options) {
     // 店铺id
     const shopId = options.id;
+    console.log(shopId)
 
     // 详情以及商品列表
     const detail = api.getShopDetails(shopId);

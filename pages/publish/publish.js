@@ -11,10 +11,13 @@ Page({
    */
   data: {
     userId: '',
+    phone: '17664056605',
     textarea: '如实填写需要帮助人的信息，住再哪里，哪里人，患了什么病，家庭遇到的困难，已经花了多少钱，还需要多少等（不少于100个汉字）',
     imagesFiles: [],
+    privateImagesFiles: [],
     videoFiles: [],
-    chooesVideo: ''
+    chooesVideo: '',
+    returnImagesFiles: []
   },
   chooseImage: function (e) {
     var that = this;
@@ -24,8 +27,38 @@ Page({
       success: function (res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         console.log(res)
+        // 选择图片后直接上传
+        if (res.tempFilePaths.length > 0) {
+          for (let i = 0; i < res.tempFilePaths.length; i++) {
+            wx.uploadFile({
+              url: 'https://gy.ginmery.com/api/User/UpdateFile',
+              filePath: res.tempFilePaths[i],
+              name: 'upload',
+              formData: {
+                'sessionid': that.data.userId,
+              },
+              success(res) {
+                console.log(res)
+              }
+            })
+          }
+        }
+
         that.setData({
           imagesFiles: that.data.imagesFiles.concat(res.tempFilePaths)
+        });
+      }
+    })
+  },
+  choosePrivateImage: function (e) {
+    var that = this;
+    wx.chooseImage({
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'], 
+      success: function (res) {
+        console.log(res)
+        that.setData({
+          privateImagesFiles: that.data.privateImagesFiles.concat(res.tempFilePaths)
         });
       }
     })
@@ -35,6 +68,13 @@ Page({
     wx.previewImage({
       current: e.currentTarget.id, // 当前显示图片的http链接
       urls: _this.data.imagesFiles // 需要预览的图片http链接列表
+    })
+  },
+  previewPrivateImage: function (e) {
+    const _this = this;
+    wx.previewImage({
+      current: e.currentTarget.id,
+      urls: _this.data.privateImagesFiles
     })
   },
   chooseVideo (e) {
@@ -69,6 +109,13 @@ Page({
     const price = formData.price
     const title = formData.title
     const remark = formData.remark
+    if (this.data.phone == '') {
+      wx.showToast({
+        title: '请填写您的手机号',
+        icon: 'none'
+      })
+      return
+    }
     if (!name) {
       wx.showToast({
         title: '请填写需要帮助人的姓名',
@@ -104,29 +151,24 @@ Page({
       })
       return
     }
-    const upload = {
-      formdata: formData, // name,money,title,decs
-      imagesFiles: this.data.imagesFiles, // 图片地址
-      videoFiles: this.data.videoFiles  // 视频地址
-    }
-    console.log(upload)
+    
     // 上传
-    // const post = api.postPublish(upload, this.data.userId)
-    // post.then(res => {
-    //   console.log(res)
-    // })
-    wx.uploadFile({
-      url: 'https://gy.ginmery.com/api/User/UpdateFile',
-      filePath: this.data.imagesFiles[0],
-      name: 'upload',
-      formData: {
-        'sessionid': this.data.userId,
-        'formData': formData
-      },
-      success(res) {
-        console.log(res)
-      }
+    const post = api.postPublish(formData, this.data.userId)
+    post.then(res => {
+      console.log(res)
     })
+    
+    // wx.uploadFile({
+    //   url: 'https://gy.ginmery.com/api/User/UpdateFile',
+    //   filePath: this.data.imagesFiles[0],
+    //   name: 'upload',
+    //   formData: {
+    //     'sessionid': this.data.userId,
+    //   },
+    //   success(res) {
+    //     console.log(res)
+    //   }
+    // })
   },
   
   /**
