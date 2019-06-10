@@ -88,22 +88,4 @@ Page({
       unAuth: false
     })
   },
-  // test
-  userPhone(e) {
-    const SessionId = wx.getStorageSync('loginFlag');
-    const vi = wx.getStorageSync('userInfoDetail').iv;
-    wx.request({
-      url: 'https://gy.ginmery.com/api/User/GetMobile',
-      method: 'GET',
-      data: {
-        Mobile: '',
-        SessionId: SessionId,
-        IV: vi
-      },
-      success(res) {
-        console.log(res.data);
-      }
-    })
-  }
-
 })

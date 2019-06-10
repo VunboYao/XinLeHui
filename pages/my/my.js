@@ -33,6 +33,7 @@ Page({
       })
     }
   },
+
   // 用户授权
   onUserInfo(e) {
     // 获取用户信息
@@ -52,9 +53,45 @@ Page({
   },
 
   // 电话
-  onPhone(){
+  onPhone() {
     wx.makePhoneCall({
       phoneNumber: '17664056605' //仅为示例，并非真实的电话号码
     })
+  },
+
+  // onOrder
+  onOrder() {
+    this._goPath('orders');
+  },
+
+  // onFeedback
+  onFeedback() {
+    this._goPath('feedback');
+  },
+
+  // onPublish_list
+  onPublish_list() {
+    this._goPath('publish_list');
+  },
+
+  // onPublish
+  onPublish() {
+    this._goPath('publish');
+  },
+
+  // 私有点击访问路径方法
+  _goPath(path) {
+    const userInfo = wx.getStorageSync("userInfo");
+    if (userInfo) {
+      wx.navigateTo({
+        url: `/pages/${path}/${path}`
+      })
+    } else {
+      wx.showModal({
+        title: '提示',
+        content: '您还未登录，请登录后访问！',
+        showCancel: false,
+      })
+    }
   }
 })

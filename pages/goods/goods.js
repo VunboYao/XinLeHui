@@ -2,6 +2,8 @@ import {
   Goods
 } from "./../../models/goods";
 
+const app = getApp();
+
 const api = new Goods()
 
 Page({
@@ -144,6 +146,13 @@ Page({
 
   /* 立即购买 */
   onNowBuy() {
+    const userInfo = wx.getStorageSync('userInfo');
+    if (!userInfo) {
+      this.setData({
+        unAuth: true,
+      })
+      return;
+    }
     const orderList = [{
       goods_id: this.data.goodsInfo.goods_id,
       goods_name: this.data.goodsInfo.goods_name,
@@ -155,5 +164,23 @@ Page({
     wx.navigateTo({
       url: '/pages/settlement/settlement?totalMoney=' + this.data.goodsInfo.goods_price
     })
+  },
+
+  /* 用户授权 */
+  onUserInfo(e) {
+     // 获取用户信息
+     const userInfo = e.detail.userInfo;
+     // 若用户授权时点击取消，则退出
+     if (!userInfo) return;
+     // 存入本地
+     wx.setStorageSync('userInfo', userInfo);
+     // 存入用户详细信息
+     wx.setStorageSync('userInfoDetail', e.detail);
+     // 存入全局
+     app.globalData.userInfo = userInfo;
+
+     this.setData({
+       unAuth: false
+     })
   }
 })
