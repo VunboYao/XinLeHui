@@ -17,10 +17,11 @@ Page({
     privateImagesFiles: [],
     videoFiles: [],
     chooesVideo: '',
-    returnImagesFiles: []
+    returnImagesFiles: [],
+    num: 0
   },
   chooseImage: function (e) {
-    var that = this;
+    const _this = this;
     wx.chooseImage({
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
@@ -35,30 +36,34 @@ Page({
               filePath: res.tempFilePaths[i],
               name: 'upload',
               formData: {
-                'sessionid': that.data.userId,
+                'sessionid': _this.data.userId,
               },
               success(res) {
-                console.log(res)
+                const data = JSON.parse(res.data)
+                console.log(data.msg)
+                _this.data.returnImagesFiles[_this.data.num] = data.msg
+                _this.data.num ++
+                console.log(_this.data.returnImagesFiles)
               }
             })
           }
         }
 
-        that.setData({
-          imagesFiles: that.data.imagesFiles.concat(res.tempFilePaths)
+        _this.setData({
+          imagesFiles: _this.data.imagesFiles.concat(res.tempFilePaths)
         });
       }
     })
   },
   choosePrivateImage: function (e) {
-    var that = this;
+    const _this = this;
     wx.chooseImage({
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'], 
       success: function (res) {
         console.log(res)
-        that.setData({
-          privateImagesFiles: that.data.privateImagesFiles.concat(res.tempFilePaths)
+        _this.setData({
+          privateImagesFiles: _this.data.privateImagesFiles.concat(res.tempFilePaths)
         });
       }
     })
@@ -90,17 +95,6 @@ Page({
         })
       }
     })
-  },
-  previewVideo: function(e) {
-    // const _this = this
-    // const videoContext = wx.createVideoContext('previewV')
-    // console.log(e)
-    // this.setData({
-    //   chooesVideo: e.currentTarget.id
-    // })
-    // videoContext.seek(0)
-    // videoContext.play()
-    // videoContext.requestFullScreen()
   },
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
@@ -157,6 +151,12 @@ Page({
     post.then(res => {
       console.log(res)
     })
+
+    // 存图片
+    wx.setStorage({
+      key: 'publishPhoto',
+      data: this.data.returnImagesFiles,
+    })
     
     // wx.uploadFile({
     //   url: 'https://gy.ginmery.com/api/User/UpdateFile',
@@ -170,6 +170,9 @@ Page({
     //   }
     // })
   },
+  _getPhone () {
+
+  },
   
   /**
    * 生命周期函数--监听页面加载
@@ -177,6 +180,8 @@ Page({
   onLoad: function (options) {
     const userKey = wx.getStorageSync('loginFlag');
     this.data.userId = userKey
+
+    this._getPhone()
   },
 
   /**

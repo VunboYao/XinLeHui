@@ -26,6 +26,9 @@ class PublishModel extends HTTP {
     return this.request({
       url: `${host}/User/PushHelp`,
       method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' 
+      },
       data: {
         formData: formData,
         sessionid: userKey 

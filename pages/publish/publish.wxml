@@ -75,12 +75,11 @@
           <view class="weui-uploader">
             <view class="weui-uploader__hd">
               <view class="weui-uploader__title">添加视频</view>
-              <!-- <view class="weui-uploader__info">{{files.length}}/2</view> -->
             </view>
             <view class="weui-uploader__bd">
               <view class="weui-uploader__files" id="videoFiles">
                 <block wx:for="{{videoFiles}}" wx:key="*this">
-                  <view class="weui-uploader__file" bindtap="previewVideo" id="{{item}}">
+                  <view class="weui-uploader__file" id="{{item}}">
                     <video class="weui-uploader__img" src="{{item}}" />
                   </view>
                 </block>
