@@ -63,6 +63,9 @@ Page({
     const userInfo = wx.getStorageSync('userInfo');
     // 授权过才可以获取信息
     if (userInfo) {
+      this.setData({
+        unAuth: false
+      })
       this._updateCartData();
     }
     // 初始化

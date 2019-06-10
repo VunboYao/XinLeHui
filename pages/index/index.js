@@ -70,7 +70,15 @@ Page({
       unAuth: false
     })
   },
-
+  onShow() {
+    // 显示时，如果用户授权了。则隐藏授权窗口
+    const userInfo = wx.getStorageSync('userInfo');
+    if (userInfo) {
+      this.setData({
+        unAuth: false
+      })
+    }
+  },
   // 取消
   onCancel(e) {
     this.setData({

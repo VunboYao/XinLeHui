@@ -24,10 +24,21 @@ Page({
       },
     })
   },
+  // 显示时，如果用户授权了，本地信息中如果有则获取用户信息
+  onShow() {
+    const userInfo = wx.getStorageSync('userInfo');
+    if (userInfo) {
+      this.setData({
+        userInfo
+      })
+    }
+  },
   // 用户授权
   onUserInfo(e) {
     // 获取用户信息
     const userInfo = e.detail.userInfo;
+    // 若用户授权时取消， 则退出
+    if (!userInfo) return;
     // 更新数据
     this.setData({
       userInfo
