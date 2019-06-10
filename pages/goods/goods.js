@@ -12,6 +12,7 @@ Page({
   data: {
     goodsInfo: {},
     specClass: true,
+    unAuth: false,
     imgList: [{
       src: 'https://gd3.alicdn.com/imgextra/i3/0/O1CN01IiyFQI1UGShoFKt1O_!!0-item_pic.jpg_400x400.jpg'
     }, {

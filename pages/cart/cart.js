@@ -2,6 +2,8 @@ import {
   Cart
 } from "./../../models/cart";
 
+const app = getApp();
+
 // 实例购物车类
 const api = new Cart()
 // 获取登录态
@@ -18,22 +20,51 @@ Page({
     toggleAll: false,
     totalMoney: 0,
     totalAmount: 0,
-    tempModifyArr: []
+    tempModifyArr: [],
+    unAuth: false, // 未授权
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // this._updateCartData()
     wx.showLoading({
       title: '加载中'
+    })
+    // 若本地无用户信息，请求授权
+    const userInfo = wx.getStorageSync('userInfo');
+    if (!userInfo) {
+      this.setData({
+        unAuth: true
+      })
+    }
+  },
+
+  // 用户授权
+  onUserInfo: function (e) {
+    // 获取用户信息
+    const userInfo = e.detail.userInfo;
+    // 若用户授权时点击取消，则退出
+    if (!userInfo) return;
+    // 存入本地
+    wx.setStorageSync('userInfo', userInfo);
+    // 存入全局
+    app.globalData.userInfo = userInfo;
+
+    // 获取购物车数据
+    this._updateCartData();
+
+    this.setData({
+      unAuth: false
     })
   },
 
   onShow: function () {
-    this._updateCartData();
-
+    const userInfo = wx.getStorageSync('userInfo');
+    // 授权过才可以获取信息
+    if (userInfo) {
+      this._updateCartData();
+    }
     // 初始化
     this.setData({
       toggleAll: false,
@@ -268,8 +299,7 @@ Page({
     });
     // 更新修改后的数据
     const userKey = wx.getStorageSync('loginFlag');
-    api.updateShopCart(tempArr, userKey).then(res => {
-    })
+    api.updateShopCart(tempArr, userKey).then(res => {})
     wx.hideLoading();
   },
 

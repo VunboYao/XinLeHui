@@ -197,3 +197,79 @@
 .no-goods-tip {
   color: #BFBFBF;
 }
+
+/* 模板遮罩层 */
+.y-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, .5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+
+/* modal对话层 */
+.y-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 10rpx;
+}
+
+/* 提示 */
+.y-title {
+  text-align: center;
+  line-height: 106rpx;
+  color: #888;
+  font-weight: 600;
+}
+
+/* 内容 */
+.y-tip {
+  padding: 0 20rpx 20rpx;
+  color: #666;
+  text-align: center;
+  font-size: 32rpx;
+}
+
+.y-inner {
+  color: #09bb07;
+}
+
+
+/* 操作 */
+.y-option {
+  width: 100%;
+  display: flex;
+}
+
+/* 取消 */
+.y-cancel {
+  height: 100rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #555;
+  background-color: #fff;
+  flex: 1;
+}
+
+/* 成功 */
+.y-confirm {
+  height: 100rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  color: #d64340;
+  flex: 1;
+  background-color: #f5f5f5;
+}

@@ -60,6 +60,7 @@
   }
 </wxs>
 
+<!-- 未登录模板授权弹出 -->
 <view wx:if="{{unAuth}}" class="y-mask">
   <view class="y-modal">
     <view class="y-title">提示</view>
