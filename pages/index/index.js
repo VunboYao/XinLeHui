@@ -10,12 +10,6 @@ const api = new IndexData()
 
 Page({
   data: {
-    indicatorDots: true,
-    autoplay: true,
-    interval: 3000,
-    duration: 300,
-    swiperList: [],
-    news: [],
     shopList: [],
     unAuth: false, // 未授权
   },
@@ -36,23 +30,12 @@ Page({
 
     // 1. 首页店铺
     const req1 = api.getShopList();
-    // 2. 首页轮播
-    const req2 = api.getBannerList();
-    // 3. 首页推荐新闻
-    const req3 = api.getNewList()
-
+    
     // 请求数据
-    let indexData = Promise.all([req1, req2, req3]);
-    indexData.then(res => {
-      let shopList = res[0]
-      let swiperList = res[1]
-      let news = res[2]
-
+    req1.then(res => {
       // 更新数据
       this.setData({
-        shopList: shopList.datas,
-        swiperList: swiperList.datas.banner_list,
-        news: news.datas.news_list,
+        shopList: res.datas,
       })
       wx.hideLoading();
     })

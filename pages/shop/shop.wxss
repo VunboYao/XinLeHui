@@ -8,55 +8,117 @@
   color: #191c2c;
   position: relative;
 }
-.shopBg {
+/* 轮播 */
+.swiper,
+.swiper-image{
   width: 100%;
-  position: fixed;
+  height: 420rpx;
+}
+.search-container{
+  width: 100%;
+  height: 80rpx;
+  position: absolute;
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: 10;
 }
-.shopBg::before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0,0,0,.5);
-    z-index: 1
+/* 搜索 */
+.search{
+  width: 80%;
+  height: 70rpx;
+  line-height: 70rpx;
+  border-radius: 35rpx;
+  background: rgba(255, 255, 255, 0.5);
+  margin: 20rpx auto;
+  text-align: center;
+  color: #FEC92E;
+  font-size: 32rpx;
 }
-.shopBg::after {
-  content: "";
-  display: block;
-  position: absolute;
-  z-index: 2;
-  top: 124px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(180deg,transparent 0,hsla(0,0%,100%,.8) 80%,#f7f7f7)
-}
-.weui-panel:after{
-  border-color: #666;
-}
-.shopBg image {
-  width: 100%;
+.search icon{
+  position: relative;
+  top: 14rpx;
 }
 
+/* 新闻 */
+.news-container{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  padding: 16rpx 20rpx;
+  background: #fff;
+  margin-top: 20rpx;
+}
+.item {
+  flex: 1;
+}
+.happy_tui{
+  padding: 0 8px;
+}
+.happy_tui > swiper {
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.show-text{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+.tui_item{
+  font-size: 12px;
+  color: #000;
+  vertical-align: middle;
+}
+.tui_text{
+  border: 1px solid #ED2A22;
+  border-radius: 12px;
+  font-size: 20rpx;
+  color: #ED2A22;
+  padding: 0 3px;
+  margin: 0 5px 0 0;
+}
+.more{
+  padding: 0 0 0 8px;
+  border-left: 1px solid #333;
+  text-align:center;
+  line-height:18px;
+  margin:auto 0;
+}
+.more > text{
+  font-size: 24rpx;
+  color: #000;
+}
+
+/* 店铺信息 */
 .shopIntro {
   width: 100%;
-  color: #fff;
-  background: transparent;
-  margin-top: 0;
+  color: #000;
+  background: #fff;
+  position: relative;
 }
 .weui-media-box__desc{
-  color: #ccc;
+  padding-right: 40rpx;
+  color: #666;
+}
+.weui-panel:before{
+  display: none;
+}
+.weui-panel:after{
+  border-color: rgba(255,255,255, .5);
+}
+.change{
+  font-size: 32rpx;
+  position: absolute;
+  top: 40%;
+  right: 20rpx;
+  transform: translateY(-50%)
 }
 
 .goods-container{
   width: 100%;
-  margin-top: 30rpx;
+  margin-top: 20rpx;
+  background: linear-gradient(#ffcdb0,#f5f5f5);
 }
 .weui-cells__title text{
   background: rgba(255, 255, 255, .6);
@@ -105,5 +167,12 @@
   overflow: hidden;
 }
 .goods .goods-price{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
   color: orange;
+}
+.goods-price > view > text{
+  color: #999;
+  font-size: 26rpx;
 }

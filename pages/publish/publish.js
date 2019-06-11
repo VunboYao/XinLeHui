@@ -145,6 +145,13 @@ Page({
       })
       return
     }
+    if (this.data.privateImagesFiles.length == 0) {
+      wx.showToast({
+        title: '请添加隐私图片',
+        icon: 'none'
+      })
+      return
+    }
     
     // 上传
     const post = api.postPublish(formData, this.data.userId)

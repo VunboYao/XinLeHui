@@ -1,35 +1,6 @@
 <view class='container'>
-  <navigator url='./../search/search' class='search-container'>
-    <view class='search'>
-      <icon type='search' size='16' color='#FEC92E'></icon> 搜索
-    </view>
-  </navigator>
-  <swiper class='swiper' indicator-dots='{{indicatorDots}}' autoplay='{{autoplay}}' interval='{{interval}}' duration='{{duration}}' circular indicator-active-color='#FEC92E' indicator-color='#ffffff'>
-    <block wx:for='{{swiperList}}' wx:key="index">
-      <swiper-item>
-        <navigator url="{{tool.swiperSelect(item.banner_link, item.banner_link_data)}}">
-          <image src='{{item.banner_image_url}}' class='swiper-image'></image>
-        </navigator>
-      </swiper-item>
-    </block>
-  </swiper>
-  <view class='news-container'>
-    <view class='item happy_tui'>
-      <swiper vertical autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular>
-        <block wx:for="{{news}}" wx:key='{{index}}'>
-          <swiper-item>
-            <navigator url='./../news/news?newsid={{item.news_id}}' class='show-text'>
-              <text class='tui_text'>推荐</text>
-              <text class='tui_item'>{{item.news_title}}</text>
-            </navigator>
-          </swiper-item>
-        </block>
-    </swiper>
-    </view>
-    <!-- <view class='more'>
-      <text>更多</text>
-    </view> -->
-  </view>
+  <view class='news-container'>店铺名称</view>
+  <!-- 商品 -->
   <view class='shop-container'>
     <view class="weui-cells__title">热门</view>
     <view class='shop-list'>
@@ -40,38 +11,34 @@
           <view class='shop-intro'>{{item.description}}</view>
         </navigator>
       </block>
+
+
+      <view class="weui-panel__bd">
+        <block wx:for='{{shopList}}' wx:key="_id">
+          <navigator url="./../shop/shop?id={{item._id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+          <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+            <image class="weui-media-box__thumb" src="{{item.images}}" />
+          </view>
+          <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+            <view class="weui-media-box__title">{{item.name}}</view>
+            <view class="weui-media-box__desc">{{item.description}}</view>
+          </view>
+        </navigator>
+        </block>
+      </view>
     </view>
   </view>
 </view>
-
-<wxs module="tool">
-  var select = function (linkData, linkId) {
-    if (linkData ==  'news') {
-      return '/pages/news/news?newsid=' + linkId;
-    } else if (linkData == 'goods') {
-      return '/pages/goods/goods?goodsid=' + linkId;
-    } else {
-      return '/pages/shop/shop?id=' + linkId;
-    }
-  }
-
-  module.exports = {
-    swiperSelect: select
-  }
-</wxs>
 
 <!-- 未登录模板授权弹出 -->
 <view wx:if="{{unAuth}}" class="y-mask">
   <view class="y-modal">
     <view class="y-title">提示</view>
-    <view class="y-tip">为了更好的用户体验，请按确认并在微信授权中点击<text class="y-inner">“允许”</text>按钮完成授权</view>
+    <view class="y-tip">为了更好的用户体验，请按确认并在微信授权中点击
+      <text class="y-inner">“允许”</text>按钮完成授权</view>
     <view class="y-option">
       <button class="y-cancel" bind:tap="onCancel" hover-class="none">取消</button>
-      <button
-        class="y-confirm"
-        bindgetuserinfo="onUserInfo"
-        open-type="getUserInfo"
-        hover-class="none">确认</button>
+      <button class="y-confirm" bindgetuserinfo="onUserInfo" open-type="getUserInfo" hover-class="none">确认</button>
     </view>
   </view>
 </view>
