@@ -1,49 +1,22 @@
 <view class="container">
-  <!-- 购物清单 -->
-  <view class="header">
-    <view class="header-title">购物清单</view>
-    <view class="header-list" wx:for="{{orderList}}" wx:key="{{index}}">
-      <view class="header-item">
-        <image class="header-item-img" src="{{item.goods_image}}"></image>
-        <text class="header-item-title">{{item.goods_name}}</text>
-        <text class="header-item-amount">{{item.goods_num}} x <text
-            class="item-money">{{item.goods_price}}元</text></text>
-      </view>
+  <view class="order-state">未付款</view>
+  <view class="order-user">
+    <view class="order-user_name">张三  020-81167888</view>
+    <view class="order-user_address">地址：广东省广州市新港中路397号</view>
+  </view>
+  <view class="goods">
+    <image class="goods-images"></image>
+    <view class="goods-info">
+      <text class="goods-name"></text>
+      <text class="goods-number">数量：</text>
+      <text class="goods_price">¥</text>
     </view>
   </view>
+  <view class="order_info">
+    <text class="order-number">订单号：20190606164643172183</text>
+    <text class="order-addTime">下单时间：</text>
+    <text class="order-amount">商品总额：</text>
 
-  <!-- 收获地址 -->
-  <view class="address">
-    <view class="address-title">收获地址</view>
-    <view bind:tap="onGetAddress" class="address-detail">
-      <view class="address-detail-intro">
-        <block wx:if="{{userAddress}}">
-          <text>
-            {{userAddress.telNumber}} {{userAddress.userName}} 收
-          </text>
-          <text>
-            {{userAddress.provinceName}} {{userAddress.cityName}} {{userAddress.countyName}} {{userAddress.detailInfo}}
-          </text>
-        </block>
-        <text wx:else class="address-detail-none">请选择收获地址</text>
-      </view>
-      <image src="../../images/right.png" class="address-detail-more"></image>
-    </view>
   </view>
 
-  <!-- 订单金额 -->
-  <view class="order">
-    <view class="order-title">订单金额</view>
-    <text class="order-money">{{totalMoney}}元</text>
-  </view>
-  <!-- 运费 -->
-  <!-- <view class="express">
-    <text class="express-title">运费</text>
-    <text class="express-money">{{expressMoney}}元</text>
-  </view> -->
-</view>
-
-<!-- 支付 -->
-<view class="pay" bind:tap="onPay">
-  <view class="request-pay">生成订单</view>
 </view>
