@@ -1,6 +1,6 @@
 <view class="container">
   <view class="header">
-    <text class="timestamp">{{goods.time}}</text>
+    <text class="timestamp">{{goods.add_time}}</text>
     <text class="current-status" wx:if="{{goods.order_state === 0}}">待付款</text>
     <text class="current-status" wx:elif="{{goods.order_state === 1}}">待收货</text>
     <text class="current-status close-status" wx:elif="{{goods.order_state === 4}}">交易关闭</text>

@@ -1,4 +1,9 @@
 // pages/search/search.js
+import {
+  SearchModel
+} from './../../models/search.js'
+const api = new SearchModel()
+
 Page({
 
   /**
@@ -6,7 +11,8 @@ Page({
    */
   data: {
     inputShowed: false,
-    inputVal: ""
+    inputVal: "",
+    searchData: []
   },
   showInput: function () {
     this.setData({
@@ -25,9 +31,26 @@ Page({
     });
   },
   inputTyping: function (e) {
+    const inputVal = e.detail.value
     this.setData({
-      inputVal: e.detail.value
+      inputVal: inputVal
     });
+    api.postSearch(inputVal).then(res => {
+      console.log(res)
+    })
+  },
+  onHotSearch (e) {
+    const link = e.currentTarget.dataset.link
+    const id = e.currentTarget.dataset.id
+    if (link === 'shop') {
+      wx.navigateTo({
+        url: `/pages/${link}/${link}?id=${id}`,
+      })
+    } else {
+      wx.navigateTo({
+        url: `/pages/${link}/${link}?${link}id=${id}`,
+      })
+    }
   },
 
   /**
