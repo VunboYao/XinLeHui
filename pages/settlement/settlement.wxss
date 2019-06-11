@@ -82,6 +82,11 @@
   width: 600rpx;
 }
 
+/* 未授权 */
+.address-no-auth {
+  width: 100%;
+}
+
 .address-detail-none{
   display: flex;
   justify-content: center;

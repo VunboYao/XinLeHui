@@ -9,7 +9,7 @@
 <view class="container">
   <!-- 全部 -->
   <block wx:if="{{index === 0}}">
-    <block wx:for="{{orderList}}" wx:for-item="goods" wx:for-index="goodsId" wx:key="{{goodsId}}">
+    <block wx:for="{{orderList}}" wx:for-item="goods" wx:for-index="goodsId" wx:key="order_id">
       <order-item class="order-item" goods="{{goods}}" bind:cancelOrder='onCancelOrder'></order-item>
     </block>
   </block>

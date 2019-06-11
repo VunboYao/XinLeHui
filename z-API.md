@@ -187,7 +187,17 @@ http://gy.ginmery.com/api/shop/OrderList?state = &sessionid =
   }
   ```
 
-  
+## 订单详情
+
+`/shop/OrderDetails`
+
+```javascript
+{
+    order_id: ?
+}
+```
+
+
 
 ## ??
 

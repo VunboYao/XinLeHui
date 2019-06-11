@@ -8,11 +8,11 @@
     <text class="current-status" wx:else="{{goods.order_state === 9}}">交易成功</text>
   </view>
   <!-- 商品展示 -->
-  <view class="main">
+  <navigator class="main" url="/pages/orderDetails/orderDetails?order_id={{goods.order_id}}&totalid={{goods.total_order_id}}">
     <view class="image-show" wx:if="{{goods.goods_list.length > 1}}">
       <scroll-view class="scroll-x" scroll-x>
-        <image class="goods-img" wx:for="{{goods.goods_list}}" wx:for-item="img" src="{{img.goods_image}}" wx:key="{{index}}">
-        </image>
+        <image class="goods-img" wx:for="{{goods.goods_list}}" wx:for-item="img" src="{{img.goods_image}}"
+          wx:key="{{index}}"/>
       </scroll-view>
     </view>
     <view class="detail-show" wx:else>
@@ -28,11 +28,11 @@
       共 <text class="goods-pay_total-amount">{{goods.goods_list.length}}</text> 件商品 实付款 <text
         class="goods-pay_total-money">¥ {{goods.pay_amount}}</text>
     </view>
-  </view>
+  </navigator>
 
   <!-- 支付/取消 -->
   <view class="footer" wx:if="{{goods.order_state === 0}}">
-    <text class="confirm-button cancel-pay" data-orderid="{{goods.order_id}}" bind:tap='cancelOrder'>取消订单</text>
+    <text class="confirm-button cancel-pay" data-orderid="{{goods.total_order_id}}" bind:tap='cancelOrder'>取消订单</text>
     <text class="confirm-button confirm-pay" bind:tap='pay'>立即支付</text>
   </view>
 

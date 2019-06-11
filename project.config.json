@@ -46,8 +46,8 @@
 				{
 					"id": 0,
 					"name": "demo",
-					"pathName": "pages/feedback/feedback",
-					"query": "id='1'",
+					"pathName": "pages/settlement/settlement",
+					"query": "order_id=5cf8d2f35360fe419c12d496",
 					"scene": null
 				},
 				{

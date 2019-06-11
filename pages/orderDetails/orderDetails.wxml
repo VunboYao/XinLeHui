@@ -1,22 +1,43 @@
 <view class="container">
-  <view class="order-state">未付款</view>
-  <view class="order-user">
-    <view class="order-user_name">张三  020-81167888</view>
-    <view class="order-user_address">地址：广东省广州市新港中路397号</view>
-  </view>
-  <view class="goods">
-    <image class="goods-images"></image>
-    <view class="goods-info">
-      <text class="goods-name"></text>
-      <text class="goods-number">数量：</text>
-      <text class="goods_price">¥</text>
+  <!-- 订单状态 -->
+  <view class="order-state">
+    <view class="order-state_wrap">
+      <icon type="{{order.if_finish ? 'success' : 'warn'}}" size="20" color="#fff"></icon>
+      <text class="order-now-state">{{order.order_state_desc}}</text>
+    </view>
+    <view class="order-option">
+      <text bind:tap="onCancelOrder" wx:if="{{order.if_cancel}}" class="order-option_button">取消订单</text>
+      <text wx:if="{{order.if_pay}}" class="order-option_button order-confirm">立即支付</text>
+      <text wx:if="{{order.if_receive}}" class="order-option_button">立即收货</text>
     </view>
   </view>
-  <view class="order_info">
-    <text class="order-number">订单号：20190606164643172183</text>
-    <text class="order-addTime">下单时间：</text>
-    <text class="order-amount">商品总额：</text>
 
+  <view class="wrap">
+    <!-- 订单地址 -->
+    <view class="order-user">
+      <image class="address-icon" src="/images/address.png"></image>
+      <view class="order-user_name">{{order.reciver_name}} {{order.reciver_phone}}</view>
+      <view class="order-user_address">地址：{{order.reciver_address}}</view>
+    </view>
+
+    <!-- 商品信息 -->
+    <view class="order-shops" wx:for="{{order.order_list}}" wx:for-item="list" wx:key="index">
+      <view class="goods" wx:for="{{list.goods_list}}" wx:key="order_id">
+        <image class="goods-images" src="{{item.goods_image}}"></image>
+        <view class="goods-info">
+          <text class="goods-name">{{item.goods_name}}{{item.goods_name}}{{item.goods_name}}{{item.goods_name}}</text>
+          <text class="goods-number">数量：{{item.goods_num}}</text>
+          <text class="goods_price">¥ {{item.goods_price}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 订单信息 -->
+    <view class="order_info">
+      <text class="order-number">订单编号：{{order.order_number}}</text>
+      <text class="order-addTime">下单时间：{{order.add_time}}</text>
+      <text class="order-amount">商品总额：<text class="order-money">¥{{order.order_amount}}</text></text>
+    </view>
   </view>
 
 </view>

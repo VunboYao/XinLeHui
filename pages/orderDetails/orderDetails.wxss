@@ -1,0 +1,145 @@
+.container {
+  padding-top: 300rpx;
+}
+
+/* 订单状态 */
+.order-state {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 320rpx;
+  color: #fff;
+  background: linear-gradient(#DC3733 20%, #EB6A33 100%);
+}
+
+.order-state_wrap {
+  margin-top: 60rpx;
+  display: flex;
+  height: 66rpx;
+  justify-content: center;
+  align-items: center;
+}
+
+.order-now-state {
+  padding-left: 20rpx;
+  font-size: 40rpx;
+}
+
+/* 订单操作 */
+.order-option {
+  display: flex;
+  justify-content: center;
+  height: 120rpx;
+  align-items: center;
+}
+.order-option_button{
+  padding: 10rpx 40rpx;
+  border-radius: 30rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  background-color: #fff;
+  color: #DC3733;
+}
+
+/* 立即支付 */
+.order-confirm {
+  margin-left: 40rpx;
+}
+
+
+/* 定位覆盖顶层 */
+.wrap {
+  position: relative;
+  background-color: #f2f2f2;
+}
+
+/* 订单地址 */
+.order-user {
+  padding: 26rpx 30rpx 30rpx 70rpx;
+  position: relative;
+  top: -30rpx;
+  background: #fff;
+  border-radius: 24rpx;
+}
+
+/* 地址icon */
+.address-icon {
+  position: absolute;
+  top: 36rpx;
+  left: 30rpx;
+  width: 30rpx;
+  height: 30rpx;
+}
+
+/* 用户姓名地址 */
+.order-user_name {
+  color: #222;
+  font-weight: 600;
+}
+.order-user_address {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 2;
+}
+
+/* 店铺 */
+.order-shops {
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+  border-radius: 24rpx;
+  background-color: #fff;
+}
+
+/* 商品 */
+.goods {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+.goods-images {
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 10rpx;
+  margin-right: 30rpx;
+}
+.goods-info {
+  width: calc(750rpx - 60rpx - 210rpx);
+  display: flex;
+  flex-direction: column;
+}
+.goods-name {
+  font-size: 30rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.goods-number {
+  font-size: 28rpx;
+  color: #666;
+}
+.goods_price {
+  font-weight: 600;
+}
+
+/* 订单信息 */
+.order_info {
+  display: flex;
+  flex-direction: column;
+  padding: 30rpx;
+  border-radius: 30rpx;
+  background-color: #fff;
+}
+.order-number,
+.order-addTime {
+  font-size: 30rpx;
+  color: #222;
+  line-height: 1.8;
+}
+
+.order-money {
+  color: #CA3D20;
+}

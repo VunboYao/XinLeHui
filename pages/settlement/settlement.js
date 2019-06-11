@@ -13,7 +13,8 @@ Page({
     orderList: [],
     totalMoney: 0,
     expressMoney: 0,
-    userAddress: null
+    userAddress: null,
+    Authorization: false,
   },
 
 
@@ -24,8 +25,16 @@ Page({
         // 缓存地址
         wx.setStorageSync('userAddress', res)
         this.setData({
-          userAddress: res
+          userAddress: res,
+          Authorization: false,
         })
+      },
+      fail: res =>{
+        if (res.errMsg == 'chooseAddress:fail auth deny') {
+         this.setData({
+           Authorization: true
+         })
+        }
       }
     })
   },
@@ -51,6 +60,21 @@ Page({
       })
     }
 
+  },
+
+  // 查询用户是否授权地址获取
+  onShow() {
+    wx.getSetting({
+      success:(res) => {
+        if (res.authSetting["scope.address"]) {
+          console.log(res.authSetting["scope.address"]);
+
+          this.setData({
+             Authorization: false
+          })
+        }
+      }
+    })
   },
 
   /* 生成订单 */

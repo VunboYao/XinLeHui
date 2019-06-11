@@ -32,7 +32,6 @@
 
 .float-box{
   width: 80%;
-  height: 160rpx;
   position: absolute;
   top: 300rpx;
   background: #fff;
@@ -59,7 +58,9 @@
 .weui-cell {
   padding: 14px 14px;
 }
-
+.weui-grid {
+  padding: 20px 10px 10px;
+}
 
 
 .y-userInfo {

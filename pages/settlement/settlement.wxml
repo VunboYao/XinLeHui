@@ -16,7 +16,7 @@
   <view class="address">
     <view class="address-title">收获地址</view>
     <view bind:tap="onGetAddress" class="address-detail">
-      <view class="address-detail-intro">
+      <view wx:if="{{!Authorization}}" class="address-detail-intro">
         <block wx:if="{{userAddress}}">
           <text>
             {{userAddress.telNumber}} {{userAddress.userName}} 收
@@ -27,7 +27,8 @@
         </block>
         <text wx:else class="address-detail-none">请选择收获地址</text>
       </view>
-      <image src="../../images/right.png" class="address-detail-more"></image>
+      <view wx:else class="address-no-auth"><button type="primary" open-type="openSetting">请授权“通讯地址”</button></view>
+      <image wx:if="{{!Authorization}}" src="../../images/right.png" class="address-detail-more"></image>
     </view>
   </view>
 
