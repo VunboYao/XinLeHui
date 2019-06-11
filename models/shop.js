@@ -30,6 +30,18 @@ class ShopData extends HTTP{
       }
     })
   }
+  // 获取首页轮播图
+  getBannerList() {
+    return super.request({
+      url: `${host}/shop/BannerList`
+    })
+  }
+  // 获取首页新闻列表
+  getNewList() {
+    return super.request({
+      url: `${host}/shop/NewsList?page=&take=`
+    })
+  }
 
 }
 

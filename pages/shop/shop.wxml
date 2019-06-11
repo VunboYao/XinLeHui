@@ -1,8 +1,39 @@
 <!--shop/shop.wxml-->
 <view class='container'>
-  <view class='shopBg'>
-    <image src='../../static/02.png'></image>
+
+  <navigator url='./../search/search' class='search-container'>
+    <view class='search'>
+      <icon type='search' size='16' color='#FEC92E'></icon> 搜索
+    </view>
+  </navigator>
+  <swiper class='swiper' indicator-dots='{{indicatorDots}}' autoplay='{{autoplay}}' interval='{{interval}}' duration='{{duration}}' circular indicator-active-color='#FEC92E' indicator-color='#ffffff'>
+    <block wx:for='{{swiperList}}' wx:key="index">
+      <swiper-item>
+        <navigator url="{{tool.swiperSelect(item.banner_link, item.banner_link_data)}}">
+          <image src='{{item.banner_image_url}}' class='swiper-image'></image>
+        </navigator>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- 新闻 -->
+  <view class='news-container'>
+    <view class='item happy_tui'>
+      <swiper vertical autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular>
+        <block wx:for="{{news}}" wx:key='{{index}}'>
+          <swiper-item>
+            <navigator url='./../news/news?newsid={{item.news_id}}' class='show-text'>
+              <text class='tui_text'>推荐</text>
+              <text class='tui_item'>{{item.news_title}}</text>
+            </navigator>
+          </swiper-item>
+        </block>
+    </swiper>
+    </view>
+    <!-- <view class='more'>
+      <text>更多</text>
+    </view> -->
   </view>
+  <!-- 店铺信息 -->
   <view class="weui-panel shopIntro">
     <view class="weui-panel__bd weui-media-box weui-media-box_appmsg">
       <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
@@ -13,6 +44,7 @@
         <view class="weui-media-box__desc">{{shopInfo.shop_decription}}</view>
       </view>
     </view>
+    <navigator open-type='switchTab' url='./../index/index' class='change'>切换></navigator>
   </view>
   <view class='goods-container'>
     <view class="weui-cells__title">
@@ -24,10 +56,28 @@
           <image src='{{item.goods_image}}'></image>
           <view class='inner'>
             <view class='goods-name'>{{item.goods_name}}</view>
-            <view class='goods-price'>{{item.goods_price}}</view>
+            <view class='goods-price'>
+              <view>¥{{item.goods_price}}</view>
+              <view><text>销量:</text> 600</view>
+            </view>
           </view>
         </navigator>
       </block>
     </view>
   </view>
 </view>
+<wxs module="tool">
+  var select = function (linkData, linkId) {
+    if (linkData ==  'news') {
+      return '/pages/news/news?newsid=' + linkId;
+    } else if (linkData == 'goods') {
+      return '/pages/goods/goods?goodsid=' + linkId;
+    } else {
+      return '/pages/shop/shop?id=' + linkId;
+    }
+  }
+
+  module.exports = {
+    swiperSelect: select
+  }
+</wxs>

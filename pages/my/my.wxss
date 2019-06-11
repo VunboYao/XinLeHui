@@ -32,7 +32,7 @@
 
 .float-box{
   width: 80%;
-  height: 160rpx;
+  height: 170rpx;
   position: absolute;
   top: 300rpx;
   background: #fff;
@@ -44,6 +44,9 @@
 .float-box .weui-grid,
 .float-box .weui-grids{
   border: none;
+}
+.float-box .weui-grid{
+  padding: 40rpx 20rpx;
 }
 
 .service{
