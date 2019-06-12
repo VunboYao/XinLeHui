@@ -19,7 +19,7 @@ Page({
   onLoad: function (options) {
     const totalId = options.totalid;
     this.data.totalId = totalId;
-    
+
     // 加载数据
     const orderId = options.order_id;
     api.getOrderDetails(orderId).then(res => {
@@ -34,7 +34,15 @@ Page({
     const totalOrderId = this.data.totalId;
     const sessionId = wx.getStorageSync('loginFlag');
     api.cancelOrder(totalOrderId, sessionId).then(res => {
-      console.log(res);
+      wx.showToast({
+        title: res.message,
+        mask: true,
+      })
+      setTimeout(() => {
+        wx.navigateBack({
+          delta: 1
+        })
+      }, 1500);
     })
   }
 
