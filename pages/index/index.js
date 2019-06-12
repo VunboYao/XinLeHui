@@ -4,16 +4,41 @@ import {
 
 const app = getApp()
 
-
 // 生成数据获取函数
 const api = new IndexData()
 
 Page({
   data: {
+    storeid: null,
+    shop_name: '',
     shopList: [],
     unAuth: false, // 未授权
   },
-  onLoad: function () {
+
+  // 
+  onSwitchTab (e) {
+    let storeid = e.currentTarget.dataset.id
+    app.globalData.storeid = storeid
+    // console.log(app.globalData.storeid)
+
+    api.getStoreid(storeid, wx.getStorageSync('loginFlag')).then(res => {
+      console.log(res)
+    })
+
+    wx.switchTab({
+      url: '/pages/shop/shop',
+    })
+  },
+  onLoad: function (options) {
+    if (options.shop_name){
+      this.setData({
+        shop_name: options.shop_name
+      })
+    }
+    // 设置storeid
+    this.setData({
+      storeid: app.globalData.storeid, 
+    })
 
     /* 查看本地是否有用户信息,没有则重新授权 */
     const userInfo = wx.getStorageSync('userInfo');
@@ -22,7 +47,6 @@ Page({
         unAuth: true
       })
     }
-
     wx.showLoading({
       title: '加载中',
       mask: true
@@ -71,4 +95,5 @@ Page({
       unAuth: false
     })
   },
+  
 })

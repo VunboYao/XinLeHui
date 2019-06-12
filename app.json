@@ -22,7 +22,11 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTextStyle": "black",
+<<<<<<< HEAD
     "backgroundTextStyle": "dark"
+=======
+    "navigationBarTitleText": "心乐会"
+>>>>>>> a14b10b083f11e0bf38622b07fef1fa61e909fdc
   },
   "tabBar": {
     "color": "#666",
@@ -31,7 +35,7 @@
     "backgroundColor": "#fff",
     "list": [
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/shop/shop",
         "text": "首页",
         "iconPath": "/images/0.png",
         "selectedIconPath": "/images/00.png"
