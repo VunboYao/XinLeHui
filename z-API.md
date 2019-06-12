@@ -164,7 +164,7 @@
 ### 获取订单列表
 
 ```javascript
-http://gy.ginmery.com/api/shop/OrderList?state = &sessionid =
+http://gy.ginmery.com/api/shop/OrderList?state = &sessionid =&page=&take=
 ```
 
 - `/shop/OrderList`
@@ -172,7 +172,9 @@ http://gy.ginmery.com/api/shop/OrderList?state = &sessionid =
   ```javascript
   {
       state: ''，// 全部："", 待付款： 'ordertoPay', 待收货： ’ordertoReceive'
-      sessionid: ?
+      sessionid: ?,
+     	page:?,
+      take:?
   }
   ```
 

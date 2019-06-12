@@ -2,10 +2,11 @@
   <view class="header">
     <text class="timestamp">{{goods.add_time}}</text>
     <text class="current-status" wx:if="{{goods.order_state === 0}}">待付款</text>
-    <text class="current-status" wx:elif="{{goods.order_state === 1}}">待收货</text>
-    <text class="current-status close-status" wx:elif="{{goods.order_state === 4}}">交易关闭</text>
+     <text class="current-status" wx:elif="{{goods.order_state === 1}}">待发货</text>
+    <text class="current-status" wx:elif="{{goods.order_state === 2}}">待收货</text>
+    <text class="current-status close-status" wx:elif="{{goods.order_state === 6}}">交易关闭</text>
     <text class="current-status close-status" wx:elif="{{goods.order_state === 5}}">订单已取消</text>
-    <text class="current-status" wx:else="{{goods.order_state === 9}}">交易成功</text>
+    <text class="current-status" wx:else="{{goods.order_state === 4}}">已完成</text>
   </view>
   <!-- 商品展示 -->
   <navigator class="main" url="/pages/orderDetails/orderDetails?order_id={{goods.order_id}}&totalid={{goods.total_order_id}}">

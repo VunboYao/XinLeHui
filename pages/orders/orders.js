@@ -14,7 +14,17 @@ Page({
     index: 0,
     orderList: [],
     noPay: [],
-    noCatch: []
+    noCatch: [],
+    page: 1,
+    take: 10,
+    reqLock: false,
+    requestTabIndex: [
+      { 0: ""},
+      {1: "ordertoPay"},
+      {
+        2: "ordertoReceive"
+      }
+    ]
   },
   // 切换tab
   changeIndex(e) {
@@ -48,17 +58,25 @@ Page({
   },
   // 取消订单
   onCancelOrder(e) {
-    let orderId = e.detail.orderId
-    console.log(orderId);
-    api.getCancelOrder(orderId, this.data.userKey).then(res => {
-      console.log(res)
-      if (res.result == 1) {
-        api.getOrderList('', this.data.userKey).then(res => {
-          console.log(res)
-          this.setData({
-            orderList: res.datas.order_list
+    wx.showModal({
+      title: '提示',
+      content: '您是否取消当前订单？',
+      success: (res) => {
+        if (res.confirm) {
+          let orderId = e.detail.orderId
+          api.getCancelOrder(orderId, this.data.userKey).then(res => {
+            if (res.result == 1) {
+              api.getOrderList('', this.data.userKey).then(res => {
+                console.log(res)
+                this.setData({
+                  orderList: res.datas.order_list
+                });
+                // 刷新
+                wx.startPullDownRefresh();
+              })
+            }
           })
-        })
+        }
       }
     })
   },
@@ -74,7 +92,6 @@ Page({
     // 待付款
     if (index === 1) {
       api.getOrderList('ordertoPay', this.data.userKey).then(res => {
-        console.log(res)
         this.setData({
           noPay: res.datas.order_list,
           index: 1
@@ -99,17 +116,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.showLoading({
-      title: '加载中...'
-    });
     this.setData({
       userKey: wx.getStorageSync('loginFlag')
     });
   },
 
   onShow: function () {
-    const currentIndex = this.data.index;
+    // 自动触发下拉加载
+    wx.startPullDownRefresh()
+  },
 
+  // 下拉刷新事件
+  onPullDownRefresh() {
+    const currentIndex = this.data.index;
     if (currentIndex == 0) {
       // 请求全部
       api.getOrderList('', this.data.userKey).then(res => {
@@ -120,7 +139,6 @@ Page({
       // 待付款
     } else if (currentIndex === 1) {
       api.getOrderList('ordertoPay', this.data.userKey).then(res => {
-        console.log(res)
         this.setData({
           noPay: res.datas.order_list,
           index: 1
@@ -129,13 +147,47 @@ Page({
       // 待收货
     } else {
       api.getOrderList('ordertoReceive', this.data.userKey).then(res => {
-        console.log(res)
         this.setData({
           noCatch: res.datas.order_list,
           index: 2
         })
       })
     }
-    wx.hideLoading()
+    // 关闭拉下刷新
+    wx.stopPullDownRefresh();
+  },
+
+  // 上拉加载
+  onReachBottom() {
+    // 如果请求中，中断
+    if (this.data.reqLock) {
+      return
+    }
+    // 加锁，请求中...
+    this.data.reqLock = true;
+    const index = this.data.index;
+    const currentState = this.data.requestTabIndex[index];
+    const page = ++this.data.page;
+    // 数据请求
+    api.getOrderList(currentState, this.data.userKey, page).then(res => {
+      // 更新数据
+      this.setData({
+        orderList: [...this.data.orderList, ...res.datas.order_list]
+      })
+      // 解锁
+      this.data.reqLock = false;
+      if (res.datas.order_list.length < this.data.take) {
+        console.log('没有更多了');
+        // 锁死
+        this.data.reqLock = true;
+      }
+    })
+  },
+
+  // onGoTop
+  onGoTop() {
+    wx.pageScrollTo({
+      scrollTop: 0
+    })
   }
 })

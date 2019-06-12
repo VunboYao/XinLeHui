@@ -125,6 +125,12 @@ Page({
           url: '/pages/pay/pay'
         })
       })
+    } else {
+      wx.showToast({
+        title: '地址不能为空',
+        image: './../../images/notice.png',
+        duration: 1000
+      })
     }
   }
 })

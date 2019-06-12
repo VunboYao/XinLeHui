@@ -1,28 +1,30 @@
-<scroll-view class="scroll-view">
-  <view class="tab-list">
-    <view bind:tap="changeIndex" class="tab-item {{index === 0 ? 'active' : ''}}" data-index="0">全部</view>
-    <view bind:tap="changeIndex" class="tab-item {{index === 1 ? 'active' : ''}}" data-index="1">待付款</view>
-    <view bind:tap="changeIndex" class="tab-item {{index === 2 ? 'active' : ''}}" data-index="2">待收货</view>
-  </view>
-</scroll-view>
+  <scroll-view class="scroll-view">
+    <view class="tab-list">
+      <view bind:tap="changeIndex" class="tab-item {{index === 0 ? 'active' : ''}}" data-index="0">全部</view>
+      <view bind:tap="changeIndex" class="tab-item {{index === 1 ? 'active' : ''}}" data-index="1">待付款</view>
+      <view bind:tap="changeIndex" class="tab-item {{index === 2 ? 'active' : ''}}" data-index="2">待收货</view>
+    </view>
+  </scroll-view>
 
-<view class="container">
-  <!-- 全部 -->
-  <block wx:if="{{index === 0}}">
-    <block wx:for="{{orderList}}" wx:for-item="goods" wx:for-index="goodsId" wx:key="order_id">
-      <order-item class="order-item" goods="{{goods}}" bind:cancelOrder='onCancelOrder'></order-item>
-    </block>
-  </block>
-  <!-- 待付款 -->
-  <block wx:if="{{index === 1}}">
-    <block wx:for="{{noPay}}" wx:for-item="goods" wx:for-index="goodsId" wx:key="{{goodsId}}">
-      <order-item goods="{{goods}}"  bind:cancelOrder='onCancelOrder'></order-item>
-    </block>
-  </block>
-  <!-- 待收货 -->
-  <block wx:if="{{index === 2}}">
-    <block wx:for="{{noCatch}}" wx:for-item="goods" wx:for-index="goodsId" wx:key="{{goodsId}}">
-      <order-item bind:confirm="confirmGoods" goods="{{goods}}"></order-item>
-    </block>
-  </block>
-</view>
+  <view class="container">
+    <!-- 全部 -->
+    <view hidden="{{index !== 0}}">
+      <block wx:for="{{orderList}}" wx:for-item="goods" wx:for-index="goodsId" wx:key="order_id">
+        <order-item class="order-item" goods="{{goods}}" bind:cancelOrder='onCancelOrder'></order-item>
+      </block>
+    </view>
+    <!-- 待付款 -->
+    <view hidden="{{index !== 1}}">
+      <block wx:for="{{noPay}}" wx:for-item="goods" wx:for-index="goodsId" wx:key="order_id">
+        <order-item goods="{{goods}}" bind:cancelOrder='onCancelOrder'></order-item>
+      </block>
+    </view>
+    <!-- 待收货 -->
+    <view hidden="{{index !== 2}}">
+      <block wx:for="{{noCatch}}" wx:for-item="goods" wx:for-index="goodsId" wx:key="order_id">
+        <order-item bind:confirm="confirmGoods" goods="{{goods}}"></order-item>
+      </block>
+    </view>
+    <view class="no-more-tip">----没有更多数据了----</view>
+  </view>
+  <image class="back-top" bind:tap="onGoTop" src="/images/backTop.png"></image>
