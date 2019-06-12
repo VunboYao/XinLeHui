@@ -4,15 +4,6 @@
   <view class='shop-container'>
     <view class="weui-cells__title">热门</view>
     <view class='shop-list'>
-      <block wx:for='{{shopList}}' wx:key="_id">
-        <navigator url='./../shop/shop?id={{item._id}}' class='shop'>
-          <image src='{{item.images}}'></image>
-          <view class='shop-name'>{{item.name}}</view>
-          <view class='shop-intro'>{{item.description}}</view>
-        </navigator>
-      </block>
-
-
       <view class="weui-panel__bd">
         <block wx:for='{{shopList}}' wx:key="_id">
           <navigator url="./../shop/shop?id={{item._id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">

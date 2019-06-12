@@ -39,6 +39,9 @@ Page({
     const shopGoods = api.getShopGoodsList(shopId);
     const _this = this
     // 数据更新
+    wx.showLoading({
+      title: '正在加载...',
+    })
     Promise.all([detail, shopGoods, swiper, news]).then(res => {
       this.setData({
         shopInfo: res[0].datas.shop_info,
@@ -49,6 +52,7 @@ Page({
       wx.setNavigationBarTitle({
         title: _this.data.shopInfo.shop_name
       })
+      wx.hideLoading()
     })
   }
 })
