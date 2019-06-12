@@ -29,11 +29,23 @@ App({
           wx.setStorageSync('loginFlag', res.sessionid);
           // 隐藏loading
           wx.hideLoading();
+
+          // 判断是否选择店铺
+          let storeid = res.storeid
+          if (storeid) {
+            this.globalData.storeid = storeid
+            wx.switchTab({
+              url: '/pages/shop/shop',
+            })
+          }
         })
       }
     })
+
+    
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    storeid: null
   },
 })

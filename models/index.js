@@ -12,6 +12,17 @@ class IndexData extends HTTP {
       url: `${host}/shop/ShopList`
     })
   }
+
+  // 存storeid
+  getStoreid(storeid, sessionid) {
+    return super.request({
+      url: `${host}/user/MagStore`,
+      data: {
+        storeid: storeid,
+        sessionid: sessionid
+      }
+    })
+  }
 }
 
 export {
