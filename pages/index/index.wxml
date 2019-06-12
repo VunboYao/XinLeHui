@@ -24,3 +24,15 @@
   </view>
 </view>
 
+<!-- 未登录模板授权弹出 -->
+<view wx:if="{{unAuth}}" class="y-mask">
+  <view class="y-modal">
+    <view class="y-title">提示</view>
+    <view class="y-tip">为了更好的用户体验，请按确认并在微信授权中点击
+      <text class="y-inner">“允许”</text>按钮完成授权</view>
+    <view class="y-option">
+      <button class="y-cancel" bind:tap="onCancel" hover-class="none">取消</button>
+      <button class="y-confirm" bindgetuserinfo="onUserInfo" open-type="getUserInfo" hover-class="none">确认</button>
+    </view>
+  </view>
+</view>
