@@ -54,6 +54,7 @@
 /* 定位覆盖顶层 */
 .wrap {
   position: relative;
+  padding-bottom: 80rpx;
   background-color: #f2f2f2;
 }
 

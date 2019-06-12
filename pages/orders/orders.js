@@ -50,10 +50,9 @@ Page({
   onCancelOrder(e) {
     let orderId = e.detail.orderId
     console.log(orderId);
-
     api.getCancelOrder(orderId, this.data.userKey).then(res => {
       console.log(res)
-      if(res.result == 1){
+      if (res.result == 1) {
         api.getOrderList('', this.data.userKey).then(res => {
           console.log(res)
           this.setData({
@@ -99,17 +98,44 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中...'
+    });
     this.setData({
       userKey: wx.getStorageSync('loginFlag')
-    })
-    // 请求
-    api.getOrderList('', this.data.userKey).then(res => {
-      console.log(res)
-      this.setData({
-        orderList: res.datas.order_list
-      })
-    })
+    });
   },
 
+  onShow: function () {
+    const currentIndex = this.data.index;
+
+    if (currentIndex == 0) {
+      // 请求全部
+      api.getOrderList('', this.data.userKey).then(res => {
+        this.setData({
+          orderList: res.datas.order_list
+        });
+      })
+      // 待付款
+    } else if (currentIndex === 1) {
+      api.getOrderList('ordertoPay', this.data.userKey).then(res => {
+        console.log(res)
+        this.setData({
+          noPay: res.datas.order_list,
+          index: 1
+        })
+      })
+      // 待收货
+    } else {
+      api.getOrderList('ordertoReceive', this.data.userKey).then(res => {
+        console.log(res)
+        this.setData({
+          noCatch: res.datas.order_list,
+          index: 2
+        })
+      })
+    }
+    wx.hideLoading()
+  }
 })
