@@ -19,14 +19,10 @@
     "pages/feedback/feedback"
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTextStyle": "black",
-<<<<<<< HEAD
-    "backgroundTextStyle": "dark"
-=======
     "navigationBarTitleText": "心乐会"
->>>>>>> a14b10b083f11e0bf38622b07fef1fa61e909fdc
   },
   "tabBar": {
     "color": "#666",
