@@ -128,7 +128,7 @@
 .billing-pay {
   width: 240rpx;
   line-height: 100rpx;
-  background: #09bb07;
+  background: #D5554C;
   color: #fff;
   text-align: center;
 }
@@ -239,7 +239,7 @@
 }
 
 .y-inner {
-  color: #09bb07;
+  color: #D5554C;
 }
 
 

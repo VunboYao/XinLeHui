@@ -14,7 +14,7 @@ Page({
    */
   data: {
     carList: [],
-    selectedColor: '#09BB07',
+    selectedColor: '#e64340',
     color: '#b2b2b2',
     userAddress: {},
     toggleAll: false,
